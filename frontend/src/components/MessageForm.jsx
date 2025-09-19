@@ -28,7 +28,7 @@ const MessageForm = () => {
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
   return (
-    <section className="container relative bg-blue-600 rounded-4xl mx-auto px-6 py-2 mt-2 md:mt-24 text-center">
+    <section className="container relative bg-blue-600 rounded-4xl mx-auto px-2 sm:px-6 py-2 mt-2 md:mt-24 text-center">
      <div className="text-center py-6 px-4">
              <h1 className="text-4xl font-bold text-white mb-2 animate-fade-in-down">
                Connect with Our Team
@@ -40,12 +40,12 @@ const MessageForm = () => {
            </div>
      
            {/* Main Content Section (Contact Form & Details) */}
-           <div className="container mx-auto px-6 py-10 flex flex-col md:flex-row gap-12">
+           <div className="container mx-auto px-2 sm:px-6 py-10 flex flex-col md:flex-row gap-8 md:gap-12">
              {/* Contact Form Section */}
-             <div className="md:w-1/2 p-8 bg-black rounded-xl shadow-lg animate-slide-in-left">
+             <div className="md:w-1/2 p-4 md:p-8 bg-black rounded-xl shadow-lg animate-slide-in-left">
                <h2 className="text-2xl font-bold text-white mb-6">Get in Touch with Us</h2>
-               <form onSubmit={handleSubmit} className="space-y-6">
-                 <div className="flex flex-col sm:flex-row gap-6">
+               <form onSubmit={handleSubmit} className="space-y-4">
+                 <div className="flex flex-col sm:flex-row gap-4">
                    <input
                      type="text"
                      name="name"
@@ -89,7 +89,7 @@ const MessageForm = () => {
              </div>
      
              {/* Contact Details Section */}
-             <div className="md:w-1/2 p-8 bg-transparent animate-slide-in-right text-white">
+             <div className="md:w-1/2 p-4 md:p-8 animate-slide-in-right text-white">
                <h2 className="text-2xl font-bold mb-6">Contact Details</h2>
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                  <div className="flex items-center gap-4">
