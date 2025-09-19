@@ -69,7 +69,7 @@ const TopDoctors = () => {
                                 className='w-full h-full object-cover rounded-3xl'
                             />
                             {/* Availability badge */}
-                            <div className={`absolute top-4 left-4 flex items-center gap-1.5 py-1 px-3 rounded-full text-xs font-bold ${item.available ? 'bg-green-500 text-white' : 'bg-gray-500 text-white'}`}>
+                            <div className={`absolute top-4 left-4 flex items-center gap-1.5 py-1 px-3 rounded-full text-xs font-bold ${item.available ? 'bg-green text-white' : 'bg-gray-500 text-white'}`}>
                                 <div className={`w-2 h-2 rounded-full ${item.available ? 'bg-white' : 'bg-white'}`}></div>
                                 <p>{item.available ? 'Available' : 'Unavailable'}</p>
                             </div>
