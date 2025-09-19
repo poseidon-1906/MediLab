@@ -1,9 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 //import maindoc from "../assets/images/maindoc.jpg";
 import doc from "../assets/images/doc1.jpg";
 const Hero = ({ title, imageUrl }) => {
  
+  const navigate = useNavigate();
+
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -55,6 +59,7 @@ const Hero = ({ title, imageUrl }) => {
             <motion.button
               className="mt-8 bg-blue-600 text-white font-semibold py-3 px-8 rounded-full hover:bg-blue-700 transition"
               variants={itemVariants}
+              onClick={() => navigate('/doctors')}
             >
               Book An Appointment
             </motion.button>
