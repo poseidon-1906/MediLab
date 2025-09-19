@@ -82,7 +82,7 @@ const SpecialityMenu = () => {
                         className={`group ${getGridClasses(index)}`}
                     >
                         <Link to={`/doctors/${item.speciality}`} onClick={() => window.scrollTo(0, 0)} 
-                              className='block w-full h-full p-6 rounded-2xl shadow-lg border border-gray-100 
+                              className='block w-full h-full p-6  shadow-lg border border-gray-100 
                                          hover:shadow-xl hover:border-blue-500 transition-all duration-300 ease-in-out'>
                             <div className="flex flex-col items-center text-center">
                                 <motion.img 
