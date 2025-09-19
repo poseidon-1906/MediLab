@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import maindoc from "../assets/images/maindoc.jpg";
+//import maindoc from "../assets/images/maindoc.jpg";
 import doc from "../assets/images/doc1.jpg";
 const Hero = ({ title, imageUrl }) => {
  
