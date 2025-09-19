@@ -47,14 +47,14 @@ const SpecialityMenu = () => {
     });
 
     const getGridClasses = (index) => {
-        // Defines the layout for a 4-column grid
+       
         switch (index) {
-            case 0: return 'lg:col-span-2 lg:row-span-1'; // General physician
-            case 1: return 'lg:col-span-2 lg:row-span-1'; // Gynecologist
-            case 2: return 'lg:col-span-1 lg:row-span-1'; // Dermatologist
-            case 3: return 'lg:col-span-1 lg:row-span-1'; // Pediatricians
-            case 4: return 'lg:col-span-1 lg:row-span-1'; // Neurologist
-            case 5: return 'lg:col-span-1 lg:row-span-1'; // Gastroenterologist
+            case 0: return 'lg:col-span-2 lg:row-span-1 bg-green'; // General physician
+            case 1: return 'lg:col-span-2 lg:row-span-1 bg-violet-500'; // Gynecologist
+            case 2: return 'lg:col-span-1 lg:row-span-1 bg-blue-500'; // Dermatologist
+            case 3: return 'lg:col-span-1 lg:row-span-1 bg-orange'; // Pediatricians
+            case 4: return 'lg:col-span-1 lg:row-span-1 bg-yellow'; // Neurologist
+            case 5: return 'lg:col-span-1 lg:row-span-1 bg-black-lg'; // Gastroenterologist
             default: return '';
         }
     };
@@ -73,7 +73,7 @@ const SpecialityMenu = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
-                className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-10'
+                className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-10 p-6 mt-4'
             >
                 {specialitiesWithDesc.map((item, index) => (
                     <motion.div
@@ -82,7 +82,7 @@ const SpecialityMenu = () => {
                         className={`group ${getGridClasses(index)}`}
                     >
                         <Link to={`/doctors/${item.speciality}`} onClick={() => window.scrollTo(0, 0)} 
-                              className='block w-full h-full p-6 bg-white rounded-2xl shadow-lg border border-gray-100 
+                              className='block w-full h-full p-6 rounded-2xl shadow-lg border border-gray-100 
                                          hover:shadow-xl hover:border-blue-500 transition-all duration-300 ease-in-out'>
                             <div className="flex flex-col items-center text-center">
                                 <motion.img 
@@ -91,8 +91,8 @@ const SpecialityMenu = () => {
                                     alt={item.speciality} 
                                     className='w-20 h-20 mb-4' 
                                 />
-                                <h3 className='text-xl font-bold text-gray-800'>{item.speciality}</h3>
-                                <p className='text-gray-500 mt-2 text-sm'>{item.description}</p>
+                                <h3 className='text-2xl font-bold text-gray-800'>{item.speciality}</h3>
+                                <p className='text-white mt-2 text-bold'>{item.description}</p>
                             </div>
                         </Link>
                     </motion.div>

@@ -56,14 +56,18 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
-            : <button onClick={() => navigate('/login')} className='bg-primary text-white px-8 py-3 rounded-full font-light hidden md:block'>Create account</button>
+            : <button onClick={() => navigate('/login')} className='bg-primary text-white px-4 py-2 md:px-8 md:py-3 rounded-full font-light'>Create account</button>
         }
         <img onClick={() => setShowMenu(true)} className='w-6 md:hidden' src={assets.menu_icon} alt="" />
 
         {/* ---- Mobile Menu ---- */}
         <div className={`md:hidden ${showMenu ? 'fixed w-full' : 'h-0 w-0'} right-0 top-0 bottom-0 z-20 overflow-hidden bg-white transition-all`}>
           <div className='flex items-center justify-between px-5 py-6'>
-            <img src={assets.logo} className='w-36' alt="" />
+           <div className="flex items-center space-x-2">
+           {/* <img src=  alt="logo" className="h-8 w-auto" /> */}
+          <span className="text-blue-600 font-bold text-2xl">MediLab</span>
+          <span className="text-gray-800 text-xl">Hospital</span>
+        </div>
             <img onClick={() => setShowMenu(false)} src={assets.cross_icon} className='w-7' alt="" />
           </div>
           <ul className='flex flex-col items-center gap-2 mt-5 px-5 text-lg font-medium'>
@@ -71,6 +75,17 @@ const Navbar = () => {
             <NavLink onClick={() => setShowMenu(false)} to='/doctors' ><p className='px-4 py-2 rounded full inline-block'>ALL DOCTORS</p></NavLink>
             <NavLink onClick={() => setShowMenu(false)} to='/about' ><p className='px-4 py-2 rounded full inline-block'>ABOUT</p></NavLink>
             <NavLink onClick={() => setShowMenu(false)} to='/contact' ><p className='px-4 py-2 rounded full inline-block'>CONTACT</p></NavLink>
+            <div className="flex flex-col items-center gap-2 mt-5">
+              {
+                token && userData
+                  ? <>
+                      <p onClick={() => {navigate('/my-profile'); setShowMenu(false)}} className='cursor-pointer'>My Profile</p>
+                      <p onClick={() => {navigate('/my-appointments'); setShowMenu(false)}} className='cursor-pointer'>My Appointments</p>
+                      <p onClick={()=>{logout(); setShowMenu(false)}} className='cursor-pointer'>Logout</p>
+                    </>
+                  : <button onClick={() => {navigate('/login'); setShowMenu(false)}} className='bg-gray-50 text-black px-4 py-3 rounded-full font-light'>Create account</button>
+              }
+            </div>
           </ul>
         </div>
       </div>
