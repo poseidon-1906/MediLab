@@ -7,6 +7,7 @@ const Doctors = () => {
     const { speciality } = useParams();
     const [filterDoc, setFilterDoc] = useState([]);
     const [showFilter, setShowFilter] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
 
     const { doctors } = useContext(AppContext);
@@ -22,11 +23,19 @@ const Doctors = () => {
     ];
 
     const applyFilter = () => {
+        let filtered = doctors;
+
         if (speciality) {
-            setFilterDoc(doctors.filter(doc => doc.speciality === speciality));
-        } else {
-            setFilterDoc(doctors);
+            filtered = doctors.filter(doc => doc.speciality === speciality);
         }
+
+        if (searchTerm) {
+            filtered = filtered.filter(doc =>
+                doc.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        }
+
+        setFilterDoc(filtered);
     };
 
     const handleFilterClick = (spec) => {
@@ -40,7 +49,7 @@ const Doctors = () => {
 
     useEffect(() => {
         applyFilter();
-    }, [doctors, speciality]);
+    }, [doctors, speciality, searchTerm]);
 
     return (
         <div className='container mx-auto px-4 py-8 md:py-12 animate-fade-in'>
@@ -49,6 +58,17 @@ const Doctors = () => {
                 <p className='text-lg text-gray-600 max-w-2xl mx-auto'>
                     Explorez notre liste de spécialistes pour trouver le médecin qui répond le mieux à vos besoins de santé.
                 </p>
+            </div>
+
+            {/* Search Bar */}
+            <div className='mb-8 px-4 md:px-0 animate-slide-up-200'>
+                <input
+                    type='text'
+                    placeholder='Search by doctor name...'
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className='w-full p-4 rounded-full border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300'
+                />
             </div>
 
             <div className='flex flex-col md:flex-row gap-8'>

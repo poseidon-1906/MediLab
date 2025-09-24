@@ -64,7 +64,7 @@ const AllAppointments = () => {
                                     {item.cancelled ? (
                                         <span className='px-4 py-1.5 text-xs font-semibold rounded-full bg-red-100 text-red-600'>Annulé</span>
                                     ) : item.isCompleted ? (
-                                        <button onClick={() => navigate(`/add-record`)} className='px-4 py-1.5 text-xs font-semibold rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200'>Add Record</button>
+                                        <button className='px-4 py-1.5 text-xs font-semibold rounded-full bg-green-100 text-green-600 hover:bg-green-400'>Approuved</button>
                                     ) : (
                                         <button 
                                             onClick={() => cancelAppointment(item._id)} 

@@ -5,6 +5,7 @@ import TopDoctors from '../components/TopDoctors'
 import Banner from '../components/Banner'
 import Biography from '../components/Biography'
 import MessageForm from '../components/MessageForm'
+import HomeBlog from '../components/HomeBlog';
 import { motion } from 'framer-motion'
 
 const containerVariants = {
@@ -40,6 +41,7 @@ const Home = () => {
       <motion.div variants={itemVariants}><SpecialityMenu /></motion.div>
       <motion.div variants={itemVariants}><TopDoctors /></motion.div>
       <motion.div variants={itemVariants}><Banner /></motion.div>
+      <motion.div variants={itemVariants}><HomeBlog /></motion.div>
       <motion.div variants={itemVariants}><MessageForm /></motion.div>
     </motion.div>
   )

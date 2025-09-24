@@ -15,6 +15,12 @@ const Appointment = lazy(() => import('./pages/Appointment'));
 const MyAppointments = lazy(() => import('./pages/MyAppointments'));
 const MyProfile = lazy(() => import('./pages/MyProfile'));
 const Verify = lazy(() => import('./pages/Verify'));
+const Services = lazy(() => import('./pages/Services'));
+const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
+const Faq = lazy(() => import('./pages/Faq'));
+const Blog = lazy(() => import('./pages/Blog'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 
 const App = () => {
   return (
@@ -33,6 +39,12 @@ const App = () => {
           <Route path='/my-appointments' element={<MyAppointments />} />
           <Route path='/my-profile' element={<MyProfile />} />
           <Route path='/verify' element={<Verify />} />
+          <Route path='/services' element={<Services />} />
+          <Route path='/services/:serviceName' element={<ServiceDetail />} />
+          <Route path='/faq' element={<Faq />} />
+          <Route path='/blog' element={<Blog />} />
+          <Route path='/blog/:postId' element={<BlogPost />} />
+          <Route path='/privacy-policy' element={<PrivacyPolicy />} />
         </Routes>
       </Suspense>
       <Footer />

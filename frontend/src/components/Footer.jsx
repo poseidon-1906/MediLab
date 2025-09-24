@@ -61,6 +61,8 @@ const Footer = () => {
               <li><Link to="/doctors" className="hover:underline hover:text-blue-600 transform transition duration-300 ease-in-out">All Doctors</Link></li>
               <li><Link to="/about" className="hover:underline hover:text-blue-600 transform transition duration-500 ease-in-out">About</Link></li>
               <li><Link to="/contact" className="hover:underline hover:text-blue-600 transform transition duration-500 ease-in-out">Contact</Link></li>
+              <li><Link to="/faq" className="hover:underline hover:text-blue-600 transform transition duration-500 ease-in-out">FAQ</Link></li>
+              <li><Link to="/privacy-policy" className="hover:underline hover:text-blue-600 transform transition duration-500 ease-in-out">Privacy Policy</Link></li>
             </ul>
           </div>
         

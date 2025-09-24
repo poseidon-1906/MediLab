@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect, useState } from 'react';
 import { assets } from '../../assets/assets';
 import { AdminContext } from '../../context/AdminContext';
@@ -111,7 +110,7 @@ const RecentDoctors = ({ doctors, loading }) => (
     </div>
 );
 
-const PatientChart = () => {
+const PatientChart = ({ patients }) => {
     const options = {
         responsive: true,
         plugins: {
@@ -125,14 +124,44 @@ const PatientChart = () => {
         },
     };
 
-    const labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    const getPastSevenDays = () => {
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const today = new Date();
+        const labels = [];
+        for (let i = 6; i >= 0; i--) {
+            const date = new Date(today);
+            date.setDate(today.getDate() - i);
+            labels.push(days[date.getDay()]);
+        }
+        return labels;
+    };
 
+    const getPatientDataForLastSevenDays = () => {
+        const today = new Date();
+        const lastSevenDaysData = new Array(7).fill(0);
+
+        if (patients) {
+            patients.forEach(patient => {
+                const patientDate = new Date(patient.createdAt);
+                const diffTime = today - patientDate;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                if (diffDays <= 7 && diffDays > 0) {
+                    const dayIndex = 6 - (diffDays - 1);
+                    lastSevenDaysData[dayIndex]++;
+                }
+            });
+        }
+        return lastSevenDaysData;
+    };
+
+    const labels = getPastSevenDays();
     const data = {
         labels,
         datasets: [
             {
                 label: 'New Patients',
-                data: labels.map(() => Math.floor(Math.random() * 20) + 5),
+                data: getPatientDataForLastSevenDays(),
                 borderColor: 'rgb(53, 162, 235)',
                 backgroundColor: 'rgba(53, 162, 235, 0.5)',
             },
@@ -147,13 +176,14 @@ const PatientChart = () => {
 };
 
 const Dashboard = () => {
-    const { aToken, getDashData, cancelAppointment, dashData, doctors, getAllDoctors } = useContext(AdminContext);
+    const { aToken, getDashData, cancelAppointment, dashData, doctors, getAllDoctors, patients, getAllPatients } = useContext(AdminContext);
     const { slotDateFormat } = useContext(AppContext);
 
     useEffect(() => {
         if (aToken) {
             getDashData();
             getAllDoctors();
+            getAllPatients();
         }
     }, [aToken]);
 
@@ -204,7 +234,7 @@ const Dashboard = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2 space-y-6">
                     <AppointmentsPanel appointments={dashData?.latestAppointments || []} loading={loading} onCancel={cancelAppointment} formatDate={slotDateFormat} />
-                    <PatientChart />
+                    <PatientChart patients={patients} />
                 </div>
                 <div className="lg:col-span-1 space-y-6">
                     <RecentDoctors doctors={doctors} loading={loading} />

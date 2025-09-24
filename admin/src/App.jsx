@@ -15,6 +15,7 @@ import Consultation from './pages/Doctor/Consultation';
 import DoctorProfile from './pages/Doctor/DoctorProfile';
 import Placeholder from './pages/Admin/Placeholder';
 import Lab from './pages/Admin/Lab';
+import AllPatients from './pages/Admin/AllPatients';
 
 const App = () => {
 
@@ -32,7 +33,7 @@ const App = () => {
             <Route path='/' element={aToken ? <Navigate to='/admin-dashboard' /> : <Navigate to='/doctor-dashboard' />} />
             <Route path='/admin-dashboard' element={<Dashboard />} />
             <Route path='/all-appointments' element={<AllAppointments />} />
-            <Route path='/patients' element={<Placeholder title="Patients" />} />
+            <Route path='/patients' element={<AllPatients />} />
             <Route path='/lab' element={<Lab />} />
             <Route path='/ward' element={<Placeholder title="Ward" />} />
             <Route path='/treatment' element={<Placeholder title="Treatment" />} />

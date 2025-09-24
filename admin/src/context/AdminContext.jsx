@@ -13,6 +13,8 @@ const AdminContextProvider = (props) => {
 
     const [appointments, setAppointments] = useState([])
     const [doctors, setDoctors] = useState([])
+    const [patients, setPatients] = useState([])
+    const [labResults, setLabResults] = useState([])
     const [dashData, setDashData] = useState(false)
 
     // Getting all Doctors data from Database using API
@@ -134,6 +136,57 @@ const AdminContextProvider = (props) => {
 
     }
 
+    // Getting all Patients data from Database using API
+    const getAllPatients = async () => {
+        try {
+            const { data } = await axios.get(backendUrl + '/api/admin/patients', { headers: { atoken: aToken } });
+            if (data.success) {
+                setPatients(data.patients);
+            } else {
+                toast.error(data.message);
+            }
+        } catch (error) {
+            toast.error(error.message);
+        }
+    }
+
+    // Getting all Lab Results from Database using API
+    const getLabResults = async () => {
+        try {
+            const { data } = await axios.get(backendUrl + '/api/admin/lab-results', { headers: { atoken: aToken } });
+            if (data.success) {
+                setLabResults(data.labResults);
+            } else {
+                toast.error(data.message);
+            }
+        } catch (error) {
+            toast.error(error.message);
+        }
+    }
+
+    // Function to add a new lab result
+    const addLabResult = async (formData) => {
+        try {
+            const { data } = await axios.post(backendUrl + '/api/admin/lab-result', formData, {
+                headers: {
+                    atoken: aToken,
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            if (data.success) {
+                toast.success(data.message);
+                getLabResults(); // Refresh the list
+                return true;
+            } else {
+                toast.error(data.message);
+                return false;
+            }
+        } catch (error) {
+            toast.error(error.message);
+            return false;
+        }
+    };
+
     const value = {
         aToken, setAToken,
         doctors,
@@ -144,7 +197,12 @@ const AdminContextProvider = (props) => {
         getAllAppointments,
         getDashData,
         cancelAppointment,
-        dashData
+        dashData,
+        patients,
+        getAllPatients,
+        labResults,
+        getLabResults,
+        addLabResult
     }
 
     return (

@@ -5,6 +5,7 @@ import bcrypt from "bcrypt";
 import validator from "validator";
 import { v2 as cloudinary } from "cloudinary";
 import userModel from "../models/userModel.js";
+import healthRecordModel from "../models/healthRecordModel.js";
 
 // API for admin login
 const loginAdmin = async (req, res) => {
@@ -125,6 +126,72 @@ const allDoctors = async (req, res) => {
     }
 }
 
+// API to get all patients list for admin panel
+const getAllPatients = async (req, res) => {
+    try {
+        const patients = await userModel.find({}).select('-password');
+        res.json({ success: true, patients });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+}
+
+// API to add lab result
+const addLabResult = async (req, res) => {
+    try {
+        const { patientId, test, result, date } = req.body;
+        const file = req.file;
+
+        if (!patientId || !test || !result || !date) {
+            return res.json({ success: false, message: "Missing Details" });
+        }
+
+        let fileUrl = '';
+        if (file) {
+            const imageUpload = await cloudinary.uploader.upload(file.path, { resource_type: "auto" });
+            fileUrl = imageUpload.secure_url;
+        }
+
+        const labResult = {
+            test,
+            result,
+            date,
+            file: fileUrl
+        };
+
+        const healthRecord = await healthRecordModel.findOne({ patientId }).sort({ createdAt: -1 });
+
+        if (!healthRecord) {
+            return res.json({ success: false, message: "No health record found for this patient. A lab result can only be added to an existing health record." });
+        }
+
+        healthRecord.labResults.push(labResult);
+        await healthRecord.save();
+
+        res.json({ success: true, message: "Lab result added successfully" });
+
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+}
+
+// API to get all lab results
+const getAllLabResults = async (req, res) => {
+    try {
+        const healthRecords = await healthRecordModel.find({ "labResults.0": { "$exists": true } }).populate('patientId', 'name');
+        const labResults = healthRecords.map(record => ({
+            patientName: record.patientId.name,
+            tests: record.labResults
+        }));
+        res.json({ success: true, labResults });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+}
+
 // API to get dashboard data for admin panel
 const adminDashboard = async (req, res) => {
     try {
@@ -154,5 +221,8 @@ export {
     appointmentCancel,
     addDoctor,
     allDoctors,
-    adminDashboard
+    adminDashboard,
+    getAllPatients,
+    addLabResult,
+    getAllLabResults
 }

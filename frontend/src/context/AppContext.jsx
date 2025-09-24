@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState, useMemo } from "react";
 import { toast } from "react-toastify";
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
 export const AppContext = createContext()
 
@@ -12,6 +13,35 @@ const AppContextProvider = (props) => {
     const [doctors, setDoctors] = useState([])
     const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '')
     const [userData, setUserData] = useState(false)
+    const navigate = useNavigate();
+
+    const logout = () => {
+        localStorage.removeItem('token');
+        setToken('');
+        setUserData(false);
+        navigate('/login');
+    };
+
+    useEffect(() => {
+        let inactivityTimer;
+
+        const resetTimer = () => {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(logout, 15 * 60 * 1000); // 15 minutes
+        };
+
+        if (token) {
+            window.addEventListener('mousemove', resetTimer);
+            window.addEventListener('keypress', resetTimer);
+            resetTimer();
+        }
+
+        return () => {
+            clearTimeout(inactivityTimer);
+            window.removeEventListener('mousemove', resetTimer);
+            window.removeEventListener('keypress', resetTimer);
+        };
+    }, [token, navigate]);
 
     // Getting Doctors using API
     const getDoctosData = async () => {

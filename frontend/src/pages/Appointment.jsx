@@ -16,6 +16,7 @@ const Appointment = () => {
     const [slotIndex, setSlotIndex] = useState(0);
     const [slotTime, setSlotTime] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [reason, setReason] = useState('');
 
     const navigate = useNavigate();
 
@@ -86,7 +87,7 @@ const Appointment = () => {
         const slotDate = day + "_" + month + "_" + year;
 
         try {
-            const { data } = await axios.post(backendUrl + '/api/user/book-appointment', { docId, slotDate, slotTime }, { headers: { token } });
+            const { data } = await axios.post(backendUrl + '/api/user/book-appointment', { docId, slotDate, slotTime, reason }, { headers: { token } });
             if (data.success) {
                 toast.success(data.message);
                 getDoctosData();
@@ -171,6 +172,18 @@ const Appointment = () => {
                             {item.time.toLowerCase()}
                         </button>
                     ))}
+                </div>
+
+                {/* Reason for visit */}
+                <div className='mt-6'>
+                    <p className='text-lg font-bold text-gray-800 mb-2'>Reason for Visit</p>
+                    <textarea
+                        value={reason}
+                        onChange={(e) => setReason(e.target.value)}
+                        placeholder='Briefly describe the reason for your visit...'
+                        className='w-full p-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300'
+                        rows='3'
+                    ></textarea>
                 </div>
 
                 {/* Book button */}

@@ -147,31 +147,24 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      
-      {/* FAQ Section: Now a separate full-width section */}
-      <div className="container mx-auto px-6 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-blue-600 mb-2">
-            Your Common Queries Answered with Additional FAQs
-          </h2>
-          <p className="text-gray-500 max-w-2xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vulputates tellus luctus nec ullamcorper mattis, viverra leo doha.
-          </p>
+
+      {/* Our Locations Section */}
+      <div className="container mx-auto px-6 py-10">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold text-blue-600 mb-2">Our Locations</h2>
         </div>
-        <div className="flex flex-col md:flex-row gap-12 items-center">
-          <div className="md:w-1/2 space-y-4">
-            {/* Le composant Faqs est appelé ici, à l'intérieur de la div qui a la bonne largeur */}
-            <Faqs />
-          </div>
-          <div className="md:w-1/2">
-            <img 
-              src={contact} 
-              alt="Customer Support" 
-              className="rounded-xl shadow-lg lg:w-[90%] lg:ml-[20%] animate-fade-in-right" 
-            />
-          </div>
+        <div className="rounded-xl shadow-lg overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322732!2d106.8195933147682!3d-6.194420295512935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f42e2cbf4de7%3A0x23b474e2b8d35a5!2sNational%20Monument!5e0!3m2!1sen!2sid!4v1622548845810!5m2!1sen!2sid"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+          ></iframe>
         </div>
       </div>
+
     </div>
   );
 };
