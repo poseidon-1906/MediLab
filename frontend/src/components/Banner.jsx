@@ -14,7 +14,7 @@ const Banner = () => {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.7 }}
-            className='flex bg-primary rounded-lg  px-6 sm:px-10 md:px-14 lg:px-12 my-20 md:mx-10'>
+            className='flex bg-primary-brand rounded-lg  px-6 sm:px-10 md:px-14 lg:px-12 my-20 md:mx-10'>
 
             {/* ------- Left Side ------- */}
             <div className='flex-1 py-8 sm:py-10 md:py-16 lg:py-24 lg:pl-5'>

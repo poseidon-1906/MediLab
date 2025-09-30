@@ -1,47 +1,80 @@
-import React from 'react'
-import { assets } from '../assets/assets'
-import AnimatedText from './AnimatedText'
-import { motion } from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { assets } from '../assets/assets';
+import reason from '../assets/images/reason.jpg';
 
 const Header = () => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate()
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, ease: 'easeOut' },
+    },
+  };
 
-    return (
-        <div className='flex flex-col md:flex-row flex-wrap bg-primary rounded-lg px-6 md:px-10 lg:px-20 '>
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.6, ease: 'easeOut' } 
+    },
+  };
 
-            {/* --------- Header Left --------- */}
-            <div className='md:w-1/2 flex flex-col items-start justify-center gap-4 py-10 m-auto md:py-[10vw] md:mb-[-30px]'>
-                <AnimatedText text="Book Appointment With Trusted Doctors" className='text-3xl md:text-4xl lg:text-5xl !text-left' />
-                <motion.div 
-                    initial={{ y: 50, opacity: 0 }} 
-                    animate={{ y: 0, opacity: 1 }} 
-                    transition={{ duration: 0.5, delay: 1 }} 
-                    className='flex flex-col md:flex-row items-center gap-3 text-white text-sm font-light'>
-                    <img className='w-28' src={assets.group_profiles} alt="" />
-                    <p>Simply browse through our extensive list of trusted doctors, <br className='hidden sm:block' /> schedule your appointment hassle-free.</p>
-                </motion.div>
-                <motion.button 
-                    initial={{ y: 50, opacity: 0 }} 
-                    animate={{ y: 0, opacity: 1 }} 
-                    transition={{ duration: 0.5, delay: 1.2 }} 
-                    onClick={() => navigate('/doctors')} 
-                    className='flex items-center gap-2 bg-white px-8 py-3 rounded-full text-[#595959] text-sm m-auto md:m-0 hover:scale-105 transition-all duration-300'>
-                    Book appointment <img className='w-3' src={assets.arrow_icon} alt="" />
-                </motion.button>
-            </div>
+  return (
+    <section className="w-full font-sans">
+      <motion.div
+        className="container mx-auto flex flex-col-reverse lg:flex-row items-center gap-12 px-4 py-16 sm:py-24"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Text Content */}
+        <div className="lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <motion.h1
+            className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight"
+            variants={itemVariants}
+          >
+            Prenez RDV avec des médecins de confiance
+          </motion.h1>
 
-            {/* --------- Header Right --------- */}
-            <motion.div 
-                initial={{ x: 100, opacity: 0 }} 
-                animate={{ x: 0, opacity: 1 }} 
-                transition={{ duration: 1, delay: 0.5 }} 
-                className='md:w-1/2 relative'>
-                <img className='w-full md:absolute bottom-0 h-auto rounded-lg' src={assets.header_img} alt="" />
-            </motion.div>
+          <motion.p
+            className="mt-6 text-lg text-gray-600 max-w-xl"
+            variants={itemVariants}
+          >
+            Parcourez notre liste de spécialistes, trouvez celui qui vous convient et planifiez votre rendez-vous en quelques clics.
+          </motion.p>
+
+          <motion.div 
+            className="mt-8 flex flex-col sm:flex-row gap-4"
+            variants={itemVariants}
+          >
+            <button
+              className="bg-primary-brand text-white font-medium py-3 px-8 rounded-lg hover:bg-opacity-90 transition-colors shadow-sm flex items-center gap-2"
+              onClick={() => navigate('/doctors')}
+            >
+              Prendre un RDV <img className='w-3' src={assets.arrow_icon} alt="" />
+            </button>
+          </motion.div>
         </div>
-    )
-}
 
-export default Header
+        {/* Image */}
+        <motion.div
+          className="lg:w-1/2 flex justify-center"
+          variants={itemVariants}
+        >
+          <img
+            src={reason}
+            alt="Doctor providing consultation"
+            className="w-full max-w-md lg:max-w-full h-auto object-contain"
+          />
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+};
+
+export default Header;

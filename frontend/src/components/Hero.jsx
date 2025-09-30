@@ -1,84 +1,85 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-//import maindoc from "../assets/images/maindoc.jpg";
-import doc from "../assets/images/doc1.jpg";
-const Hero = ({ title, imageUrl }) => {
- 
-  const navigate = useNavigate();
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
+const Hero = ({ title, imageUrl }) => {
+  const navigate = useNavigate();
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.7,
-        ease: ["easeIn", "easeOut"],
-        stiffness: 100,
-        duration: 0.5, 
+        staggerChildren: 0.2, // Slower stagger for a more elegant effect
       },
     },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.6, ease: 'easeOut' } 
+    },
   };
 
   return (
-    <>
-      <motion.section
-        className="container mx-auto px-6 mt-8 md:mt-5 py-12 hero-bg rounded-[40px] md:rounded-[80px]"
+    <section className="w-full font-sans">
+      <motion.div
+        className="container mx-auto flex flex-col-reverse lg:flex-row items-center gap-12 px-4 py-16 sm:py-24"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-between">
-          <div className="md:w-1/2 text-center md:text-left mb-8 md:mb-0">
-            {/* Titre animé */}
-            <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-              variants={itemVariants}
-            >
-              {title}
-            </motion.h1>
-
-            
-            <motion.p
-              className="mt-4 text-gray-600 max-w-xl mx-auto md:mx-0"
-              variants={itemVariants}
-            >
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s.
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim, in adipisci recusandae, eos architecto vel rem magnam accusantium ea aperiam illo commodi quo eaque facere minima! Recusandae molestias iste dolore?
-            </motion.p>
-
-            
-            <motion.button
-              className="mt-8 bg-blue-600 text-white font-semibold py-3 px-8 rounded-full hover:bg-blue-700 transition"
-              variants={itemVariants}
-              onClick={() => navigate('/doctors')}
-            >
-              Book An Appointment
-            </motion.button>
-          </div>
-
-          
-          <motion.div
-            className="md:w-1/2 flex justify-center md:justify-end"
+        {/* Text Content */}
+        <div className="lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <motion.h1
+            className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight"
             variants={itemVariants}
           >
-            <motion.img
-              src={imageUrl}
-              alt="main doctor"
-              className="rounded-2xl shadow-lg object-fit object-center"
-            />
+            {title}
+          </motion.h1>
+
+          <motion.p
+            className="mt-6 text-lg text-gray-600 max-w-xl"
+            variants={itemVariants}
+          >
+            Nous nous engageons à fournir des soins de santé exceptionnels et personnalisés. Notre équipe de professionnels dévoués est là pour vous accompagner à chaque étape.
+          </motion.p>
+
+          <motion.div 
+            className="mt-8 flex flex-col sm:flex-row gap-4"
+            variants={itemVariants}
+          >
+            <button
+              className="bg-primary-brand text-white font-medium py-3 px-8 rounded-lg hover:bg-opacity-90 transition-colors shadow-sm"
+              onClick={() => navigate('/doctors')}
+            >
+              Prendre un RDV
+            </button>
+            <button
+              className="bg-transparent text-gray-700 font-medium py-3 px-8 rounded-lg border border-gray-300 hover:bg-gray-100 hover:border-gray-400 transition-colors"
+              onClick={() => navigate('/services')}
+            >
+              Nos Services
+            </button>
           </motion.div>
         </div>
-      </motion.section>
-    </>
+
+        {/* Image */}
+        <motion.div
+          className="lg:w-1/2 flex justify-center"
+          variants={itemVariants}
+        >
+          <img
+            src={imageUrl}
+            alt="Doctor providing consultation"
+            className="rounded-lg shadow-xl object-cover h-full max-h-[500px]"
+          />
+        </motion.div>
+      </motion.div>
+    </section>
   );
 };
 

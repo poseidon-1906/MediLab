@@ -1,106 +1,78 @@
-import React from 'react'
-import { assets } from '../assets/assets'
+import React from 'react';
 import { Link } from "react-router-dom";
-import { FaLocationArrow, FaPhone } from "react-icons/fa6";
-import { MdEmail } from "react-icons/md";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { motion } from 'framer-motion';
 
 const Footer = () => {
-  const hours = [
-    {
-      id: 1,
-      day: "Monday",
-      time: "9:00 AM - 11:00 PM",
-    },
-    {
-      id: 2,
-      day: "Tuesday",
-      time: "12:00 PM - 12:00 AM",
-    },
-    {
-      id: 3,
-      day: "Wednesday",
-      time: "10:00 AM - 10:00 PM",
-    },
-    {
-      id: 4,
-      day: "Thursday",
-      time: "9:00 AM - 9:00 PM",
-    },
-    {
-      id: 5,
-      day: "Friday", 
-      time: "3:00 PM - 9:00 PM",
-    },
-    {
-      id: 6,
-      day: "Saturday",
-      time: "9:00 AM - 3:00 PM",
-    },
-  ];
 
   return (
-    <>
-      <footer className="bg-white rounded-t-[40px] md:rounded-t-[80px] mt-12 md:mt-24 py-12 px-6 card-shadow">
-        <hr className="mb-5"/>
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
+    <motion.footer 
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+      className="bg-gray-900 text-gray-300 font-sans"
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           
-          <div>
-            <div className="flex items-center space-x-2">
-              <span className="text-blue-600 font-bold text-2xl">MedLab</span>
-              <span className="text-gray-800 text-xl">Hospital</span>
+          {/* About Section */}
+          <div className="md:col-span-1">
+            <div className="flex items-center space-x-2 mb-4">
+              <span className="text-primary-brand font-bold text-2xl">MediLab</span>
+              <span className="text-white text-xl font-light">Hospital</span>
             </div>
-            <p className="mt-4 text-gray-600">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            <p className="text-gray-400">
+              Fournir des soins de santé de la plus haute qualité avec compassion et expertise.
             </p>
           </div>
          
+          {/* Quick Links Section */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-gray-600">
-              <li><Link to="/" className="hover:underline hover:text-blue-600 transform transition duration-500 ease-in-out">Home</Link></li>
-              <li><Link to="/doctors" className="hover:underline hover:text-blue-600 transform transition duration-300 ease-in-out">All Doctors</Link></li>
-              <li><Link to="/about" className="hover:underline hover:text-blue-600 transform transition duration-500 ease-in-out">About</Link></li>
-              <li><Link to="/contact" className="hover:underline hover:text-blue-600 transform transition duration-500 ease-in-out">Contact</Link></li>
-              <li><Link to="/faq" className="hover:underline hover:text-blue-600 transform transition duration-500 ease-in-out">FAQ</Link></li>
-              <li><Link to="/privacy-policy" className="hover:underline hover:text-blue-600 transform transition duration-500 ease-in-out">Privacy Policy</Link></li>
+            <h4 className="font-semibold text-white text-lg mb-4">Liens Rapides</h4>
+            <ul className="space-y-3">
+              <li><Link to="/" className="hover:text-primary-brand transition-colors">Accueil</Link></li>
+              <li><Link to="/doctors" className="hover:text-primary-brand transition-colors">Docteurs</Link></li>
+              <li><Link to="/services" className="hover:text-primary-brand transition-colors">Services</Link></li>
+              <li><Link to="/about" className="hover:text-primary-brand transition-colors">À Propos</Link></li>
+              <li><Link to="/contact" className="hover:text-primary-brand transition-colors">Contact</Link></li>
             </ul>
           </div>
         
+          {/* Contact Section */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Hours</h4>
-            <ul className="space-y-2 text-gray-600">
-              {hours.map((item) => (
-                <li key={item.id}>
-                  {item.day}: <br />
-                  {item.time}
-                </li>
-              ))}
+            <h4 className="font-semibold text-white text-lg mb-4">Contactez-nous</h4>
+            <ul className="space-y-4 text-gray-400">
+              <li className="flex items-start space-x-3">
+                <FaMapMarkerAlt className="text-primary-brand mt-1 flex-shrink-0" />
+                <span>123 Rue de la Santé, 75000 Paris, France</span>
+              </li>
+              <li className="flex items-center space-x-3">
+                <FaPhoneAlt className="text-primary-brand" />
+                <a href="tel:+33123456789" className="hover:text-primary-brand transition-colors">+33 1 23 45 67 89</a>
+              </li>
+              <li className="flex items-center space-x-3">
+                <FaEnvelope className="text-primary-brand" />
+                <a href="mailto:info@medilab.fr" className="hover:text-primary-brand transition-colors">info@medilab.fr</a>
+              </li>
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-bold text-lg mb-4">Contact</h4>
-            <ul className="space-y-2 text-gray-600">
-              <li className="flex items-center space-x-2">
-                <FaLocationArrow className="text-blue-600" />
-                <a href="#" className="hover:underline">123 Street, City, Country</a>
-              </li>
-              <li className="flex items-center space-x-2">
-                <FaPhone className="text-blue-600" />
-                <a href="tel:+1234567890" className="hover:underline">+1 234 567 890</a>
-              </li>
-              <li className="flex items-center space-x-2">
-                <MdEmail className="text-blue-600" />
-                <a href="mailto:info@medlab.com" className="hover:underline">info@medlab.com</a>
-              </li>
-            </ul>
+        </div>
+
+        <hr className="border-gray-700 my-8"/>
+
+        <div className="flex flex-col sm:flex-row justify-between items-center text-sm">
+          <p className="text-gray-500 mb-4 sm:mb-0">&copy; {new Date().getFullYear()} Medilab Hospital. Tous droits réservés.</p>
+          <div className="flex space-x-4">
+            <a href="#" className="text-gray-500 hover:text-primary-brand transition-colors"><FaFacebook size={20} /></a>
+            <a href="#" className="text-gray-500 hover:text-primary-brand transition-colors"><FaTwitter size={20} /></a>
+            <a href="#" className="text-gray-500 hover:text-primary-brand transition-colors"><FaLinkedin size={20} /></a>
           </div>
         </div>
-      </footer>
-    <div className="bg-red py-4 px-6 text-center text-gray-900 text-sm">
-      &copy; {new Date().getFullYear()} MedLab Hospital. All rights reserved.
-    </div>
-    </>
+
+      </div>
+    </motion.footer>
   );
 };
 
