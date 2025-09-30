@@ -23,7 +23,7 @@ const Navbar = () => {
       initial={{ y: -100, opacity: 0 }} 
       animate={{ y: 0, opacity: 1 }} 
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className='flex items-center justify-between font-sans bg-gray-50/80 backdrop-blur-sm sticky top-0 z-50 px-4 sm:px-6 lg:px-8 py-3 mb-5 border-b border-gray-200'
+      className='flex items-center justify-between font-sans bg-white sticky top-0 z-50 px-4 lg:px-6 py-4 mb-5 border-b border-gray-200 shadow-md'
     >
       <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('/')}>
         <span className="text-primary-brand font-bold text-2xl">MediLab</span>
@@ -62,24 +62,25 @@ const Navbar = () => {
       </div>
 
       {/* ---- Mobile Menu ---- */}
-      <div className={`fixed inset-0 z-50 md:hidden ${showMenu ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out bg-gray-400`}>
-        <div className='flex items-center justify-between px-5 py-4 border-b border-gray-200'>
-          
-          <img onClick={() => setShowMenu(false)} src={assets.cross_icon} className='w-6 cursor-pointer' alt="Close" />
-        </div>
-        <ul className='flex flex-col items-center gap-4 mt-8 text-lg font-medium bg-white py-10'>
-          <NavLink onClick={() => setShowMenu(false)} to='/' className={navLinkClasses}>HOME</NavLink>
-          <NavLink onClick={() => setShowMenu(false)} to='/doctors' className={navLinkClasses}>ALL DOCTORS</NavLink>
-          <NavLink onClick={() => setShowMenu(false)} to='/services' className={navLinkClasses}>SERVICES</NavLink>
-          <NavLink onClick={() => setShowMenu(false)} to='/about' className={navLinkClasses}>ABOUT</NavLink>
-          <NavLink onClick={() => setShowMenu(false)} to='/contact' className={navLinkClasses}>CONTACT</NavLink>
-        </ul>
-        <div className="absolute bottom-8 left-0 right-0 px-5">
-          {!token && (
-            <button onClick={() => { navigate('/login'); setShowMenu(false); }} className='w-full bg-primary-brand text-white px-5 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-colors'>
-              Prendre RDV
-            </button>
-          )}
+      <div className={`fixed inset-0 z-50 md:hidden transition-opacity duration-300 ease-in-out ${showMenu ? 'bg-black bg-opacity-50' : 'pointer-events-none opacity-0'}`}>
+        <div className={`absolute top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${showMenu ? 'translate-x-0' : 'translate-x-full'}`}>
+          <div className='flex items-center justify-end px-5 py-4 border-b border-gray-200'>
+            <img onClick={() => setShowMenu(false)} src={assets.cross_icon} className='w-6 cursor-pointer' alt="Close" />
+          </div>
+          <ul className='flex flex-col items-start gap-4 mt-8 text-lg font-medium px-5'>
+            <NavLink onClick={() => setShowMenu(false)} to='/' className={navLinkClasses}>HOME</NavLink>
+            <NavLink onClick={() => setShowMenu(false)} to='/doctors' className={navLinkClasses}>ALL DOCTORS</NavLink>
+            <NavLink onClick={() => setShowMenu(false)} to='/services' className={navLinkClasses}>SERVICES</NavLink>
+            <NavLink onClick={() => setShowMenu(false)} to='/about' className={navLinkClasses}>ABOUT</NavLink>
+            <NavLink onClick={() => setShowMenu(false)} to='/contact' className={navLinkClasses}>CONTACT</NavLink>
+          </ul>
+          <div className="absolute bottom-8 left-0 right-0 px-5">
+            {!token && (
+              <button onClick={() => { navigate('/login'); setShowMenu(false); }} className='w-full bg-primary-brand text-white px-5 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-colors'>
+                Prendre RDV
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </motion.nav>

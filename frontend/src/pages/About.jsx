@@ -1,6 +1,6 @@
 import React from "react";
 import Hero from "../components/Hero";
-import Biography from "../components/Biography";
+import OurMission from "../components/OurMission";
 import about from "../assets/images/about.jpg";
 import background from "../assets/images/background.jpg";
 
@@ -16,7 +16,7 @@ const About = () => {
       <div className="container mx-auto px-6 py-12">
         <div className="text-center text-2xl font-semibold pt-10 text-gray-700">
           <p>
-            ABOUT <span className="text-blue-600">US</span>
+            ABOUT <span className="text-primary-brand">US</span>
           </p>
         </div>
 
@@ -34,22 +34,24 @@ const About = () => {
             <p>
               MediLab is committed to excellence in healthcare technology. We continuously strive to enhance our platform, integrating the latest advancements to improve user experience and deliver superior service. Whether you're booking your first appointment or managing ongoing care, MediLab is here to support you every step of the way.
             </p>
-            <strong className="text-blue-800 text-xl font-bold">Our Vision</strong>
+            <strong className="text-primary-brand text-xl font-bold">Our Vision</strong>
             <p>
               Our vision at MediLab is to create a seamless healthcare experience for every user. We aim to bridge the gap between patients and healthcare providers, making it easier for you to access the care you need, when you need it.
             </p>
           </div>
         </div>
 
+          <OurMission />
+
         <div className="text-center text-xl my-10 font-medium text-gray-500">
           <p>
-            WHY <span className="text-blue-600 font-semibold">CHOOSE US</span>
+            WHY <span className="text-primary-brand font-semibold">CHOOSE US</span>
           </p>
         </div>
         
         <div className="flex flex-col md:flex-row gap-6 mb-20">
           <div className="flex-1 border-2 border-transparent hover:border-blue-500 hover:bg-white p-8 sm:p-12 flex flex-col gap-5 text-gray-600 transition-all duration-300 rounded-xl shadow-md cursor-pointer">
-            <strong className="text-blue-600 text-xl">EFFICIENCY</strong>
+            <strong className="text-primary-brand text-xl">EFFICIENCY</strong>
             <p>
               Streamlined appointment scheduling that fits into your busy lifestyle.
             </p>
@@ -61,7 +63,7 @@ const About = () => {
             </p>
           </div>
           <div className="flex-1 border-2 border-transparent hover:border-blue-500 hover:bg-white p-8 sm:p-12 flex flex-col gap-5 text-gray-600 transition-all duration-300 rounded-xl shadow-md cursor-pointer">
-            <strong className="text-blue-600 text-xl">PERSONALIZATION</strong>
+            <strong className="text-red-400 text-xl">PERSONALIZATION</strong>
             <p>
               Tailored recommendations and reminders to help you stay on top of your health.
             </p>
@@ -69,7 +71,7 @@ const About = () => {
         </div>
       </div>
       
-      <Biography descrip={"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"} />
+      
     </>
   );
 };
