@@ -6,32 +6,32 @@ const HospitalServices = () => {
     {
       title: 'Consultations Générales',
       description: 'Accédez à des médecins généralistes pour des diagnostics, des traitements initiaux et des conseils de santé préventifs. Disponible sur rendez-vous ou sans rendez-vous pour les urgences mineures.',
-      image: 'https://framerusercontent.com/images/rx5rJLf14IqbbtKiy7T4Rc.jpg', // Remplacez par une image appropriée
+      image: 'https://i.pinimg.com/736x/42/da/d3/42dad316ca2032b7bc1592d38640c261.jpg', // Remplacez par une image appropriée
     },
     {
       title: 'Soins d\'Urgence',
       description: 'Notre service d\'urgence est ouvert 24h/24 et 7j/7, équipé pour gérer toutes les situations médicales critiques avec rapidité et expertise.',
-      image: 'https://framerusercontent.com/images/qP267wFUx1rxHurQREec.png', // Remplacez par une image appropriée
+      image: 'https://i.pinimg.com/1200x/9b/52/07/9b520790bd11999ac07941b1b7ee327d.jpg',// Remplacez par une image appropriée
     },
     {
       title: 'Chirurgie Spécialisée',
       description: 'Nos chirurgiens experts réalisent une large gamme d\'interventions, de la chirurgie mini-invasive aux procédures complexes, avec un suivi post-opératoire complet.',
-      image: 'https://framerusercontent.com/images/kYGyXfOgUCuaxZx4.png', // Remplacez par une image appropriée
+      image: 'https://i.pinimg.com/736x/ce/c8/b2/cec8b274003d2580dec34e16199a094e.jpg', // Remplacez par une image appropriée
     },
     {
       title: 'Imagerie Médicale',
       description: 'Services d\'imagerie avancés incluant IRM, scanner, radiographie et échographie pour des diagnostics précis et rapides, essentiels à votre plan de traitement.',
-      image: 'https://framerusercontent.com/images/jSDnHBSnIwlPqO9Fv8Hg0.png', // Remplacez par une image appropriée
+      image: 'https://i.pinimg.com/736x/db/6d/31/db6d3148a32f383c1bf040d5ea27951b.jpg',// Remplacez par une image appropriée
     },
     {
       title: 'Pédiatrie & Maternité',
       description: 'Des soins spécialisés pour les enfants, de la naissance à l\'adolescence, et un accompagnement complet pour les futures mamans, avant, pendant et après l\'accouchement.',
-      image: 'https://framerusercontent.com/images/bFElAcmzzKBFCFT3UsGTNWzU.jpg', // Remplacez par une image appropriée
+      image: 'https://i.pinimg.com/736x/c5/ef/98/c5ef982f09b87d66d8e1d2699f65e4ba.jpg',  // Remplacez par une image appropriée
     },
     {
       title: 'Laboratoire d\'Analyses',
       description: 'Un laboratoire moderne pour toutes vos analyses sanguines, urinaires et autres tests diagnostiques, garantissant des résultats fiables et rapides pour votre médecin.',
-      image: 'https://framerusercontent.com/images/zGkqtb4KD1KSFXTHjuFrabLYk.png', // Remplacez par une image appropriée
+      image: 'https://i.pinimg.com/736x/d2/96/0a/d2960af7a7790bdf3d50d96e00b051b0.jpg', // Remplacez par une image appropriée
     },
   ];
 

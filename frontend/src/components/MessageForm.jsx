@@ -28,7 +28,7 @@ const MessageForm = () => {
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
   return (
-    <section className="container relative bg-blue-600 rounded-4xl mx-auto px-2 sm:px-6 py-2 mt-2 md:mt-24 text-center">
+    <section className="container relative bg-primary-brand rounded-4xl mx-auto px-2 sm:px-6 py-2 mt-2 md:mt-24 text-center">
      <div className="text-center py-6 px-4">
              <h1 className="text-4xl font-bold text-white mb-2 animate-fade-in-down">
                Connect with Our Team
@@ -42,8 +42,8 @@ const MessageForm = () => {
            {/* Main Content Section (Contact Form & Details) */}
            <div className="container mx-auto px-2 sm:px-6 py-10 flex flex-col md:flex-row gap-8 md:gap-12">
              {/* Contact Form Section */}
-             <div className="md:w-1/2 p-4 md:p-8 bg-black rounded-xl shadow-lg animate-slide-in-left">
-               <h2 className="text-2xl font-bold text-white mb-6">Get in Touch with Us</h2>
+             <div className="md:w-1/2 p-4 md:p-8 bg-gray-200 rounded-xl shadow-lg animate-slide-in-left">
+               <h2 className="text-2xl font-bold text-black mb-6">Get in Touch with Us</h2>
                <form onSubmit={handleSubmit} className="space-y-4">
                  <div className="flex flex-col sm:flex-row gap-4">
                    <input
@@ -52,7 +52,7 @@ const MessageForm = () => {
                      placeholder="Input your name"
                      value={formData.name}
                      onChange={handleChange}
-                     className="w-full p-4 border border-gray-700 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 placeholder-gray-400"
+                     className="w-full p-4 border border-gray-700 bg-gray-100 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 placeholder-black"
                    />
                    <input
                      type="email"
@@ -60,7 +60,7 @@ const MessageForm = () => {
                      placeholder="Input your email"
                      value={formData.email}
                      onChange={handleChange}
-                     className="w-full p-4 border border-gray-700 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 placeholder-gray-400"
+                     className="w-full p-4 border border-gray-700 bg-gray-100 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 placeholder-black"
                    />
                  </div>
                  <input
@@ -69,7 +69,7 @@ const MessageForm = () => {
                    placeholder="Subject"
                    value={formData.subject}
                    onChange={handleChange}
-                   className="w-full p-4 border border-gray-700 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 placeholder-gray-400"
+                   className="w-full p-4 border border-gray-700 bg-gray-100 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 placeholder-black"
                  />
                  <textarea
                    name="message"
@@ -77,11 +77,11 @@ const MessageForm = () => {
                    value={formData.message}
                    onChange={handleChange}
                    rows="6"
-                   className="w-full p-4 border border-gray-700 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 placeholder-gray-400"
+                   className="w-full p-4 border border-gray-700 bg-gray-100 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 placeholder-black"
                  ></textarea>
                  <button
                    type="submit"
-                   className="bg-blue-600 text-white font-semibold py-3 px-8 rounded-full hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                   className="bg-blue-600 text-white font-semibold py-3 px-8 rounded-full hover:bg-primary-brand transition-all duration-300 transform hover:scale-105 shadow-lg"
                  >
                    Send message
                  </button>

@@ -1,10 +1,6 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-
-// Importez les icônes nécessaires de React Icons
-// Vous pouvez choisir d'autres catégories (Fa, Io5, Md, Hi, Lu, etc.)
-// Vérifiez la documentation de React Icons pour trouver les icônes qui vous conviennent le mieux.
 import { FaHeartbeat, FaHandshake, FaStethoscope, FaFlask } from 'react-icons/fa'; 
 // Exemple d'autres icônes pour d'autres avantages
 // import { IoShieldCheckmark, IoMedical } from 'react-icons/io5'; 
@@ -101,7 +97,7 @@ const OurMission = () => {
               <img
                 src={image2} // Utilise l'image importée
                 alt="Vue de l'hôpital ou équipement"
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover object-center "
               />
             </div>
           </motion.div>

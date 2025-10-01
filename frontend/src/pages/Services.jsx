@@ -10,13 +10,8 @@ const Services = () => {
 
     return (
         <div className='animate-fade-in'>
-            <div className='container mx-auto px-4 py-8 md:py-12'>
-                <div className='text-center mb-8 animate-slide-up'>
-                    <h1 className='text-3xl md:text-4xl font-extrabold text-blue-600 mb-2'>Our Services</h1>
-                    <p className='text-lg text-gray-600 max-w-2xl mx-auto'>
-                        We offer a wide range of medical services to meet your needs.
-                    </p>
-                </div>
+            <div className='container mx-auto px-4 py-2 md:py-12'>
+              
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
                     {specialities.map((speciality, index) => (
                         <Link to={`/services/${speciality.toLowerCase().replace(/ /g, '-')}`} key={index}>
