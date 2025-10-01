@@ -96,7 +96,7 @@ const Contact = () => {
               </div>
               <div>
                 <strong className="block">Adresse</strong>
-                <p className="text-sm">123 Rue de la Santé, 75000 Paris, France</p>
+                <p className="text-sm">Douala Yaounde Cameroun</p>
               </div>
             </div>
             <div className="flex items-center gap-4 text-gray-700">
@@ -105,7 +105,7 @@ const Contact = () => {
               </div>
               <div>
                 <strong className="block">Téléphone</strong>
-                <p className="text-sm">+33 1 23 45 67 89</p>
+                <p className="text-sm">+237 123 456 789</p>
               </div>
             </div>
             <div className="flex items-center gap-4 text-gray-700">
