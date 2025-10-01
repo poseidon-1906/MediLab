@@ -159,7 +159,7 @@ const ChatWidget = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed bottom-24 right-8 w-full max-w-md h-[70vh] bg-gray-100 rounded-2xl shadow-2xl flex flex-col border border-gray-200 font-sans"
+            className="fixed bottom-4 inset-x-4 h-[80vh] md:bottom-24 md:right-8 md:left-auto md:w-full md:max-w-md md:h-[70vh] bg-gray-100 rounded-2xl shadow-2xl flex flex-col border border-gray-200 font-sans"
           >
             <div className="p-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-t-2xl flex justify-between items-center shadow-lg">
               <h3 className="font-bold text-lg">Assistant IA MediLab</h3>
