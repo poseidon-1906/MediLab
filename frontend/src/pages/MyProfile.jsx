@@ -62,7 +62,7 @@ const ProfileSection = memo(({ userData, setUserData, isEdit, setIsEdit, image, 
                 <div className='relative group'>
                     {isEdit ? (
                         <label htmlFor='image-upload' className='cursor-pointer'>
-                            <img className='w-48 h-48 rounded-full object-cover border-4 border-gray-200 shadow-md group-hover:opacity-60' src={image ? URL.createObjectURL(image) : (userData.image || assets.profile_pic)} alt='Profil de l\'utilisateur' />
+                            <img className='w-48 h-48 rounded-full object-cover border-4 border-gray-200 shadow-md group-hover:opacity-60' alt="Profil de l'utilisateur" />
                             <div className='absolute inset-0 flex flex-col items-center justify-center text-gray-800 opacity-0 group-hover:opacity-100'>
                                 <img className='w-12 h-12' src={assets.upload_icon} alt='Icône de téléchargement' />
                                 <p className="mt-2 text-xs font-semibold">Mettre à jour</p>
@@ -70,7 +70,7 @@ const ProfileSection = memo(({ userData, setUserData, isEdit, setIsEdit, image, 
                             <input onChange={(e) => setImage(e.target.files[0])} type='file' id='image-upload' hidden />
                         </label>
                     ) : (
-                        <img className='w-48 h-48 rounded-full object-cover border-4 border-gray-200 shadow-md' src={userData.image || assets.profile_pic} alt='Profil de l\'utilisateur' />
+                        <img className='w-48 h-48 rounded-full object-cover border-4 border-gray-200 shadow-md' src={userData.image || assets.profile_pic} alt="Profil de l'utilisateur" />
                     )}
                 </div>
             </motion.div>
