@@ -45,11 +45,11 @@ const Footer = () => {
             <ul className="space-y-4 text-gray-400">
               <li className="flex items-start space-x-3">
                 <FaMapMarkerAlt className="text-primary-brand mt-1 flex-shrink-0" />
-                <span>123 Rue de la Santé, 75000 Paris, France</span>
+                <span>Douala Yaounde Cameroun</span>
               </li>
               <li className="flex items-center space-x-3">
                 <FaPhoneAlt className="text-primary-brand" />
-                <a href="tel:+33123456789" className="hover:text-primary-brand transition-colors">+33 1 23 45 67 89</a>
+                <a href="tel:+33123456789" className="hover:text-primary-brand transition-colors">+237 123 456 789</a>
               </li>
               <li className="flex items-center space-x-3">
                 <FaEnvelope className="text-primary-brand" />
