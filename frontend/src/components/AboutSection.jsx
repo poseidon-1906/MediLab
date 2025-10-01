@@ -50,7 +50,7 @@ const AboutSection = () => {
                 <motion.div variants={imageVariants} className="w-full">
                     <img 
                         src={assets.about_image} 
-                        alt="Doctor and patient discussion" 
+                        alt="Discussion entre médecin et patient" 
                         className="rounded-lg shadow-xl w-full h-auto object-cover"
                     />
                 </motion.div>

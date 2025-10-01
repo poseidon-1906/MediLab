@@ -12,7 +12,7 @@ const MyAppointments = () => {
     const [appointments, setAppointments] = useState([]);
     const [selectedPayment, setSelectedPayment] = useState('');
 
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const months = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"];
 
     // Function to format the date
     const slotDateFormat = (slotDate) => {
@@ -30,8 +30,8 @@ const MyAppointments = () => {
                 toast.error(data.message);
             }
         } catch (error) {
-            console.error('Error fetching appointments:', error);
-            toast.error('Failed to load appointments. Please log in again.');
+            console.error('Erreur lors de la récupération des rendez-vous:', error);
+            toast.error('Échec du chargement des rendez-vous. Veuillez vous reconnecter.');
             if (error.response && error.response.status === 401) {
                 navigate('/login');
             }
@@ -49,8 +49,8 @@ const MyAppointments = () => {
                 toast.error(data.message);
             }
         } catch (error) {
-            console.error('Error canceling appointment:', error);
-            toast.error(error.response?.data?.message || 'An error occurred.');
+            console.error('Erreur lors de l\'annulation du rendez-vous:', error);
+            toast.error(error.response?.data?.message || 'Une erreur est survenue.');
         }
     };
 
@@ -60,22 +60,22 @@ const MyAppointments = () => {
             key: import.meta.env.VITE_RAZORPAY_KEY_ID,
             amount: order.amount,
             currency: order.currency,
-            name: 'Appointment Payment',
-            description: "Appointment Payment",
+            name: 'Paiement du rendez-vous',
+            description: "Paiement du rendez-vous",
             order_id: order.id,
             receipt: appointmentId,
             handler: async (response) => {
                 try {
                     const { data } = await axios.post(backendUrl + "/api/user/verifyRazorpay", response, { headers: { token } });
                     if (data.success) {
-                        toast.success('Payment successful!');
+                        toast.success('Paiement réussi !');
                         getUserAppointments();
                     } else {
-                        toast.error('Payment verification failed.');
+                        toast.error('La vérification du paiement a échoué.');
                     }
                 } catch (error) {
                     console.error(error);
-                    toast.error(error.response?.data?.message || 'Payment verification failed.');
+                    toast.error(error.response?.data?.message || 'La vérification du paiement a échoué.');
                 }
             }
         };
@@ -94,7 +94,7 @@ const MyAppointments = () => {
             }
         } catch (error) {
             console.error(error);
-            toast.error(error.response?.data?.message || 'Failed to initiate payment.');
+            toast.error(error.response?.data?.message || 'Échec de l\'initiation du paiement.');
         }
     };
 
@@ -109,7 +109,7 @@ const MyAppointments = () => {
             }
         } catch (error) {
             console.error(error);
-            toast.error(error.response?.data?.message || 'Failed to initiate Stripe payment.');
+            toast.error(error.response?.data?.message || 'Échec de l\'initiation du paiement Stripe.');
         }
     };
 
@@ -121,7 +121,7 @@ const MyAppointments = () => {
 
     return (
         <div className="container mx-auto px-4 py-8 md:py-12">
-            <h1 className='text-3xl font-bold text-gray-800 mb-6'>My Appointments</h1>
+            <h1 className='text-3xl font-bold text-gray-800 mb-6'>Mes rendez-vous</h1>
             {appointments.length > 0 ? (
                 <div className='space-y-6'>
                     {appointments.map((item, index) => (
@@ -139,13 +139,13 @@ const MyAppointments = () => {
                                 <p className='text-base italic text-gray-500 mb-2'>{item.docData.speciality}</p>
                                 <div className='space-y-2 text-base'>
                                     <p className='text-gray-800 font-medium'>
-                                        <span className="font-bold text-gray-900">Address:</span> {item.docData.address.line1}, {item.docData.address.line2}
+                                        <span className="font-bold text-gray-900">Adresse :</span> {item.docData.address.line1}, {item.docData.address.line2}
                                     </p>
                                     <p className='text-gray-800 font-medium'>
-                                        <span className="font-bold text-gray-900">Date & Time:</span> {slotDateFormat(item.slotDate)} | {item.slotTime}
+                                        <span className="font-bold text-gray-900">Date et heure :</span> {slotDateFormat(item.slotDate)} | {item.slotTime}
                                     </p>
                                     <p className='text-gray-800 font-medium'>
-                                        <span className="font-bold text-gray-900">Fees:</span> {item.docData.fees} {currencySymbol}
+                                        <span className="font-bold text-gray-900">Honoraires :</span> {item.docData.fees} {currencySymbol}
                                     </p>
                                 </div>
                             </div>
@@ -155,9 +155,9 @@ const MyAppointments = () => {
                                     <button
                                         onClick={() => setSelectedPayment(item._id)}
                                         className='w-full md:w-48 py-2 border border-blue-500 text-blue-500 rounded-full font-medium transition-all duration-300 hover:bg-blue-500 hover:text-white'
-                                        aria-label={`Pay for appointment with ${item.docData.name}`}
+                                        aria-label={`Payer pour le rendez-vous avec ${item.docData.name}`}
                                     >
-                                        Pay Online
+                                        Payer en ligne
                                     </button>
                                 )}
 
@@ -166,14 +166,14 @@ const MyAppointments = () => {
                                         <button
                                             onClick={() => handleStripePayment(item._id)}
                                             className='w-full md:w-48 py-2 border border-gray-300 rounded-full transition-all duration-300 hover:bg-gray-100 flex items-center justify-center'
-                                            aria-label={`Pay with Stripe for appointment with ${item.docData.name}`}
+                                            aria-label={`Payer avec Stripe pour le rendez-vous avec ${item.docData.name}`}
                                         >
                                             <img className='h-5 w-auto' src={assets.stripe_logo} alt="Stripe" />
                                         </button>
                                         <button
                                             onClick={() => handleRazorpayPayment(item._id)}
                                             className='w-full md:w-48 py-2 border border-gray-300 rounded-full transition-all duration-300 hover:bg-gray-100 flex items-center justify-center'
-                                            aria-label={`Pay with Razorpay for appointment with ${item.docData.name}`}
+                                            aria-label={`Payer avec Razorpay pour le rendez-vous avec ${item.docData.name}`}
                                         >
                                             <img className='h-5 w-auto' src={assets.razorpay_logo} alt="Razorpay" />
                                         </button>
@@ -182,13 +182,13 @@ const MyAppointments = () => {
 
                                 {!item.cancelled && item.payment && !item.isCompleted && (
                                     <div className='w-full md:w-48 py-2 rounded-full font-medium text-center bg-green-100 text-green-700'>
-                                        Paid
+                                        Payé
                                     </div>
                                 )}
 
                                 {item.isCompleted && (
                                     <div className='w-full md:w-48 py-2 rounded-full font-medium text-center bg-gray-100 text-gray-500'>
-                                        Completed
+                                        Terminé
                                     </div>
                                 )}
 
@@ -196,15 +196,15 @@ const MyAppointments = () => {
                                     <button
                                         onClick={() => cancelAppointment(item._id)}
                                         className='w-full md:w-48 py-2 border border-red-500 text-red-500 rounded-full font-medium transition-all duration-300 hover:bg-red-500 hover:text-white'
-                                        aria-label={`Cancel appointment with ${item.docData.name}`}
+                                        aria-label={`Annuler le rendez-vous avec ${item.docData.name}`}
                                     >
-                                        Cancel Appointment
+                                        Annuler le rendez-vous
                                     </button>
                                 )}
 
                                 {item.cancelled && (
                                     <div className='w-full md:w-48 py-2 rounded-full font-medium text-center bg-red-100 text-red-700'>
-                                        Cancelled
+                                        Annulé
                                     </div>
                                 )}
                             </div>
@@ -213,13 +213,13 @@ const MyAppointments = () => {
                 </div>
             ) : (
                 <div className="flex flex-col items-center justify-center py-20 bg-gray-50 rounded-xl shadow-inner">
-                    <img src={assets.empty_list_illustration} alt="No appointments found" className="w-64 mb-6" />
-                    <p className="text-xl text-gray-600 font-medium">You have no appointments yet.</p>
+                    <img src={assets.empty_list_illustration} alt="Aucun rendez-vous trouvé" className="w-64 mb-6" />
+                    <p className="text-xl text-gray-600 font-medium">Vous n'avez pas encore de rendez-vous.</p>
                     <button
                         onClick={() => navigate('/')}
                         className='mt-6 px-6 py-3 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300'
                     >
-                        Book Your First Appointment
+                        Prenez votre premier rendez-vous
                     </button>
                 </div>
             )}

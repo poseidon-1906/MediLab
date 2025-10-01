@@ -8,26 +8,26 @@ const HomeBlog = () => {
     const blogPosts = [
         {
             id: 1,
-            title: 'The Importance of Regular Check-ups',
-            excerpt: 'Regular check-ups can help find potential health issues before they become a problem. Learn why they are so important.',
-            author: 'Dr. John Doe',
-            date: 'September 24, 2025',
+            title: 'L\'importance des contrôles réguliers',
+            excerpt: 'Les contrôles réguliers peuvent aider à détecter les problèmes de santé potentiels avant qu\'ils ne deviennent un problème. Découvrez pourquoi ils sont si importants.',
+            author: 'Dr Jean Dupont',
+            date: '24 septembre 2025',
             image: blog1,
         },
         {
             id: 2,
-            title: '5 Tips for a Healthy Heart',
-            excerpt: 'A healthy heart is crucial for overall health. Here are 5 tips to keep your heart in top shape.',
-            author: 'Dr. Jane Smith',
-            date: 'September 20, 2025',
+            title: '5 conseils pour un cœur en bonne santé',
+            excerpt: 'Un cœur en bonne santé est crucial pour la santé globale. Voici 5 conseils pour garder votre cœur en pleine forme.',
+            author: 'Dr Jeanne Smith',
+            date: '20 septembre 2025',
             image: health,
         },
         {
             id: 3,
-            title: 'Managing Stress for a Better Life',
-            excerpt: 'Stress can have a major impact on your health. Discover effective strategies for managing stress.',
-            author: 'Dr. Emily White',
-            date: 'September 15, 2025',
+            title: 'Gérer le stress pour une vie meilleure',
+            excerpt: 'Le stress peut avoir un impact majeur sur votre santé. Découvrez des stratégies efficaces pour gérer le stress.',
+            author: 'Dr Émilie Blanc',
+            date: '15 septembre 2025',
             image: stress,
         },
     ];
@@ -35,9 +35,9 @@ const HomeBlog = () => {
     return (
         <div className='container mx-auto px-4 py-8 md:py-12'>
             <div className='text-center mb-8'>
-                <h2 className='text-3xl md:text-4xl font-extrabold text-blue-600 mb-2'>From Our Blog</h2>
+                <h2 className='text-3xl md:text-4xl font-extrabold text-blue-600 mb-2'>De Notre Blog</h2>
                 <p className='text-lg text-gray-600 max-w-2xl mx-auto'>
-                    Stay up-to-date with the latest health news and tips from our experts.
+                    Restez à jour avec les dernières nouvelles et conseils sur la santé de nos experts.
                 </p>
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
@@ -48,7 +48,7 @@ const HomeBlog = () => {
                             <h3 className='text-xl font-bold text-gray-800 mb-2'>{post.title}</h3>
                             <p className='text-gray-600 mb-4'>{post.excerpt}</p>
                             <Link to={`/blog/${post.id}`} className='font-semibold text-blue-600 hover:underline'>
-                                Read More
+                                Lire la suite
                             </Link>
                         </div>
                     </div>

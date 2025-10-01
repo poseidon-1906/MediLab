@@ -81,7 +81,7 @@ const WhyUsSection = () => {
                 <motion.div variants={itemVariants} className="relative w-full h-[500px] hidden lg:block">
                     <img 
                         src={reason1} 
-                        alt="Doctors collaborating" 
+                        alt="Médecins collaborant" 
                         className="rounded-lg shadow-xl w-full h-full object-cover"
                     />
                     <motion.div 

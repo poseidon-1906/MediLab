@@ -20,7 +20,7 @@ const Footer = () => {
           <div className="md:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <span className="text-primary-brand font-bold text-2xl">MediLab</span>
-              <span className="text-white text-xl font-light">Hospital</span>
+              <span className="text-white text-xl font-light">Hôpital</span>
             </div>
             <p className="text-gray-400">
               Fournir des soins de santé de la plus haute qualité avec compassion et expertise.

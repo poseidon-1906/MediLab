@@ -68,7 +68,7 @@ const Header = () => {
         >
           <img
             src={reason}
-            alt="Doctor providing consultation"
+            alt="Médecin en consultation"
             className="w-full max-w-md lg:max-w-full h-auto object-contain"
           />
         </motion.div>

@@ -7,19 +7,19 @@ const Testimonials = () => {
 
     const testimonials = [
         {
-            name: "Emily Johnson",
+            name: "Émilie Dubois",
             avatar: assets.doc1, // Placeholder
             stars: 5,
             text: "Leur service était exceptionnel. Ils se sont assurés que j'étais à l'aise et informée à chaque étape du processus."
         },
         {
-            name: "Michael Roberts",
+            name: "Michel Robert",
             avatar: assets.doc2, // Placeholder
             stars: 5,
             text: "Le soutien que j'ai reçu était excellent. Ils se souciaient vraiment de mes besoins et ont dépassé mes attentes."
         },
         {
-            name: "Sophia Martinez",
+            name: "Sophie Martin",
             avatar: assets.doc3, // Placeholder
             stars: 4,
             text: "Je me suis sentie valorisée et prise en charge. Leur équipe a tout mis en œuvre pour fournir un soutien et un service exceptionnels."

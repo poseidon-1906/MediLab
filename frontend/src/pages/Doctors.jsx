@@ -22,6 +22,16 @@ const Doctors = () => {
         'Gastroenterologist',
     ];
 
+    const specialityTranslations = {
+        'All': 'Tous',
+        'General physician': 'Médecin généraliste',
+        'Gynecologist': 'Gynécologue',
+        'Dermatologist': 'Dermatologue',
+        'Pediatricians': 'Pédiatre',
+        'Neurologist': 'Neurologue',
+        'Gastroenterologist': 'Gastro-entérologue',
+    };
+
     const applyFilter = () => {
         let filtered = doctors;
 
@@ -41,7 +51,8 @@ const Doctors = () => {
     const handleFilterClick = (spec) => {
         if (spec === 'All') {
             navigate('/doctors');
-        } else {
+        }
+        else {
             navigate(`/doctors/${spec}`);
         }
         setShowFilter(false);
@@ -54,7 +65,7 @@ const Doctors = () => {
     return (
         <div className='container mx-auto px-4 py-8 md:py-12 animate-fade-in'>
             <div className='text-center mb-8 animate-slide-up'>
-                <h1 className='text-3xl md:text-4xl font-extrabold text-blue-600 mb-2'>Our Top Doctors</h1>
+                <h1 className='text-3xl md:text-4xl font-extrabold text-blue-600 mb-2'>Nos meilleurs médecins</h1>
                 <p className='text-lg text-gray-600 max-w-2xl mx-auto'>
                     Explorez notre liste de spécialistes pour trouver le médecin qui répond le mieux à vos besoins de santé.
                 </p>
@@ -64,7 +75,7 @@ const Doctors = () => {
             <div className='mb-8 px-4 md:px-0 animate-slide-up-200'>
                 <input
                     type='text'
-                    placeholder='Search by doctor name...'
+                    placeholder='Rechercher par nom de médecin...'
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className='w-full p-4 rounded-full border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300'
@@ -78,7 +89,7 @@ const Doctors = () => {
                         onClick={() => setShowFilter(!showFilter)}
                         className={`flex items-center gap-2 py-2 px-4 rounded-full border transition-all duration-300 ${showFilter ? 'bg-blue-600 text-white border-blue-600' : 'bg-white border-gray-300 text-gray-700'}`}
                     >
-                        <span className='font-semibold'>Filters</span>
+                        <span className='font-semibold'>Filtres</span>
                         <svg className={`w-4 h-4 transition-transform duration-300 ${showFilter ? 'transform rotate-180' : ''}`} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'>
                             <path d='M7 10l5 5 5-5H7z' />
                         </svg>
@@ -87,7 +98,7 @@ const Doctors = () => {
 
                 {/* Filter Panel */}
                 <div className={`flex-shrink-0 w-full md:w-64 p-6 rounded-2xl bg-white shadow-lg transition-all duration-500 ${showFilter ? 'block' : 'hidden md:block'}`}>
-                    <h3 className='text-lg font-bold text-gray-800 mb-4'>Filter by Specialty</h3>
+                    <h3 className='text-lg font-bold text-gray-800 mb-4'>Filtrer par spécialité</h3>
                     <div className='flex flex-col gap-3 text-sm text-gray-600'>
                         {specialities.map((spec, index) => (
                             <button
@@ -95,7 +106,7 @@ const Doctors = () => {
                                 key={index}
                                 className={`text-left w-full py-2 px-4 rounded-lg font-medium transition-all duration-300 hover:bg-gray-100 ${speciality === spec ? 'bg-blue-100 text-blue-600 font-bold' : ''}`}
                             >
-                                {spec}
+                                {specialityTranslations[spec] || spec}
                             </button>
                         ))}
                     </div>
@@ -119,10 +130,10 @@ const Doctors = () => {
                                             <p className='text-xl font-bold text-gray-800'>Dr. {item.name}</p>
                                             <div className={`flex items-center gap-1.5 text-sm font-semibold ${item.available ? 'text-green-600' : 'text-gray-500'}`}>
                                                 <div className={`w-2.5 h-2.5 rounded-full ${item.available ? 'bg-green-600' : 'bg-gray-500'}`}></div>
-                                                <p>{item.available ? 'Available' : 'Not Available'}</p>
+                                                <p>{item.available ? 'Disponible' : 'Indisponible'}</p>
                                             </div>
                                         </div>
-                                        <p className='text-base text-blue-600 font-medium'>{item.speciality}</p>
+                                        <p className='text-base text-blue-600 font-medium'>{specialityTranslations[item.speciality] || item.speciality}</p>
                                         <p className='text-sm text-gray-500 mt-1'>{item.degree} - {item.experience}</p>
                                     </div>
                                 </div>
@@ -130,7 +141,7 @@ const Doctors = () => {
                         </div>
                     ) : (
                         <div className='text-center py-20 bg-white rounded-lg shadow-lg'>
-                            <p className='text-xl text-gray-500 font-medium'>No doctors found in this specialty.</p>
+                            <p className='text-xl text-gray-500 font-medium'>Aucun médecin trouvé dans cette spécialité.</p>
                         </div>
                     )}
                 </div>

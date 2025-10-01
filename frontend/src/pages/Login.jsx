@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import loginIllustration from "../assets/images/illustration.avif";
 
 const Login = () => {
-    const [state, setState] = useState('Sign Up');
+    const [state, setState] = useState("S'inscrire");
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -19,11 +19,9 @@ const Login = () => {
 
         try {
             let response;
-            if (state === 'Sign Up') {
-                // Pour l'inscription, nous envoyons name, email et password
+            if (state === "S'inscrire") {
                 response = await axios.post(backendUrl + '/api/user/register', { name, email, password });
             } else {
-                // Pour la connexion, nous envoyons email et password seulement
                 response = await axios.post(backendUrl + '/api/user/login', { email, password });
             }
 
@@ -32,12 +30,11 @@ const Login = () => {
             if (data.success) {
                 localStorage.setItem('token', data.token);
                 setToken(data.token);
-                toast.success(data.message); // Affichez le message de succès du backend
+                toast.success(data.message);
             } else {
-                toast.error(data.message); // Affichez le message d'erreur du backend
+                toast.error(data.message);
             }
         } catch (error) {
-            // Gestion des erreurs plus robuste, comme dans le premier code
             console.error(error);
             const errorMessage = error.response?.data?.message || 'Une erreur inattendue est survenue. Veuillez réessayer.';
             toast.error(errorMessage);
@@ -61,23 +58,23 @@ const Login = () => {
                         className="w-full max-w-sm animate-fade-in"
                     />
                     <h2 className="text-2xl font-bold text-blue-600 mb-2">
-                        {state === 'Sign Up' ? 'Welcome!' : 'Welcome Back!'}
+                        {state === "S'inscrire" ? 'Bienvenue !' : 'Content de vous revoir !'}
                     </h2>
                     <p className="text-gray-500 text-sm">
-                        {state === 'Sign Up' ? 'Create your account to get started.' : 'Please log in to your account to continue.'}
+                        {state === "S'inscrire" ? 'Créez votre compte pour commencer.' : 'Veuillez vous connecter à votre compte pour continuer.'}
                     </p>
                 </div>
 
                 {/* Right Side: Form */}
                 <div className="md:w-1/2 p-10 flex flex-col justify-center bg-white">
                     <h2 className="text-3xl font-bold mb-8 text-center text-blue-600">
-                        {state === 'Sign Up' ? 'Sign Up' : 'Sign In'}
+                        {state === "S'inscrire" ? "S'inscrire" : 'Se connecter'}
                     </h2>
                     <form onSubmit={onSubmitHandler} className="w-full space-y-6">
-                        {state === 'Sign Up' && (
+                        {state === "S'inscrire" && (
                             <input
                                 type="text"
-                                placeholder="Full Name"
+                                placeholder="Nom complet"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 className="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 hover:shadow-md"
@@ -94,7 +91,7 @@ const Login = () => {
                         />
                         <input
                             type="password"
-                            placeholder="Password"
+                            placeholder="Mot de passe"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             className="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 hover:shadow-md"
@@ -102,24 +99,24 @@ const Login = () => {
                         />
                         <div className="flex justify-end">
                             <a href="#" className="text-sm font-medium text-blue-600 hover:underline">
-                                Forgot Password?
+                                Mot de passe oublié ?
                             </a>
                         </div>
                         <button
                             type="submit"
                             className="w-full bg-blue-600 text-white font-semibold py-4 rounded-full hover:bg-blue-700 transition-all duration-300 transform hover:scale-105"
                         >
-                            {state === 'Sign Up' ? 'Create Account' : 'Login'}
+                            {state === "S'inscrire" ? 'Créer un compte' : 'Se connecter'}
                         </button>
                     </form>
                     <div className="text-center mt-6">
                         <p className="text-sm text-gray-700">
-                            {state === 'Sign Up' ? 'Already have an account?' : 'Don\'t have an account?'}
+                            {state === "S'inscrire" ? 'Vous avez déjà un compte ?' : 'Vous n\'avez pas de compte ?'}
                             <span
-                                onClick={() => setState(state === 'Sign Up' ? 'Login' : 'Sign Up')}
+                                onClick={() => setState(state === "S'inscrire" ? 'Se connecter' : "S'inscrire")}
                                 className="text-blue-600 font-semibold hover:underline cursor-pointer ml-1"
                             >
-                                {state === 'Sign Up' ? 'Login here' : 'Sign Up here'}
+                                {state === "S'inscrire" ? 'Connectez-vous ici' : 'Inscrivez-vous ici'}
                             </span>
                         </p>
                     </div>

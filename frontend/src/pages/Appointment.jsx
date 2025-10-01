@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 const Appointment = () => {
     const { docId } = useParams();
     const { doctors, currencySymbol, backendUrl, token, getDoctosData } = useContext(AppContext);
-    const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+    const daysOfWeek = ['DIM', 'LUN', 'MAR', 'MER', 'JEU', 'VEN', 'SAM'];
 
     const [docInfo, setDocInfo] = useState(false);
     const [docSlots, setDocSlots] = useState([]);
@@ -69,12 +69,12 @@ const Appointment = () => {
 
     const bookAppointment = async () => {
         if (!token) {
-            toast.warning('Login to book appointment');
+            toast.warning('Connectez-vous pour prendre rendez-vous');
             return navigate('/login');
         }
 
         if (!docSlots[slotIndex] || !slotTime) {
-            toast.error('Please select a valid date and time slot.');
+            toast.error('Veuillez sélectionner une date et un créneau horaire valides.');
             return;
         }
 
@@ -97,7 +97,7 @@ const Appointment = () => {
             }
         } catch (error) {
             console.error(error);
-            toast.error(error.response?.data?.message || 'An error occurred.');
+            toast.error(error.response?.data?.message || 'Une erreur est survenue.');
         } finally {
             setIsLoading(false);
         }
@@ -126,7 +126,7 @@ const Appointment = () => {
                 <div className='flex-1'>
                     {/* ----- Doc Info : name, degree, experience ----- */}
                     <p className='flex items-center gap-2 text-3xl font-bold text-gray-800 animate-slide-up'>
-                        Dr. {docInfo.name} <img className='w-6' src={assets.verified_icon} alt="Verified" />
+                        Dr. {docInfo.name} <img className='w-6' src={assets.verified_icon} alt="Vérifié" />
                     </p>
                     <div className='flex items-center flex-wrap gap-2 mt-1 text-gray-600 animate-slide-up-200'>
                         <p className="font-medium">{docInfo.degree} - {docInfo.speciality}</p>
@@ -135,19 +135,19 @@ const Appointment = () => {
 
                     {/* ----- Doc About ----- */}
                     <div className="mt-4 animate-slide-up-400">
-                        <p className='flex items-center gap-1 text-base font-semibold text-gray-800'>About <img className='w-4' src={assets.info_icon} alt="Info" /></p>
+                        <p className='flex items-center gap-1 text-base font-semibold text-gray-800'>À propos <img className='w-4' src={assets.info_icon} alt="Info" /></p>
                         <p className='text-sm text-gray-600 mt-2 leading-relaxed'>{docInfo.about}</p>
                     </div>
 
                     <p className='text-lg font-bold text-gray-800 mt-6 animate-slide-up-600'>
-                        Appointment fee: <span className='text-blue-600'>{docInfo.fees} {currencySymbol}</span>
+                        Honoraires de consultation : <span className='text-blue-600'>{docInfo.fees} {currencySymbol}</span>
                     </p>
                 </div>
             </div>
 
             {/* Booking slots */}
             <div className='mt-12'>
-                <p className='text-xl font-bold text-gray-800 mb-4 animate-slide-up-800'>Book a Slot</p>
+                <p className='text-xl font-bold text-gray-800 mb-4 animate-slide-up-800'>Réserver un créneau</p>
 
                 {/* Date selection */}
                 <div className='flex gap-4 items-center overflow-x-auto pb-4 custom-scrollbar'>
@@ -176,11 +176,11 @@ const Appointment = () => {
 
                 {/* Reason for visit */}
                 <div className='mt-6'>
-                    <p className='text-lg font-bold text-gray-800 mb-2'>Reason for Visit</p>
+                    <p className='text-lg font-bold text-gray-800 mb-2'>Motif de la visite</p>
                     <textarea
                         value={reason}
                         onChange={(e) => setReason(e.target.value)}
-                        placeholder='Briefly describe the reason for your visit...'
+                        placeholder='Décrivez brièvement le motif de votre visite...'
                         className='w-full p-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300'
                         rows='3'
                     ></textarea>
@@ -192,7 +192,7 @@ const Appointment = () => {
                     disabled={!slotTime || isLoading}
                     className='mt-8 px-10 py-4 w-full md:w-auto text-lg font-bold rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed'
                 >
-                    {isLoading ? 'Booking...' : 'Book an Appointment'}
+                    {isLoading ? 'Réservation en cours...' : 'Prendre un rendez-vous'}
                 </button>
             </div>
 

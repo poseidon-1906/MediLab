@@ -12,6 +12,15 @@ const responsive = {
     mobile: { breakpoint: { max: 576, min: 0 }, items: 1 },
 };
 
+const specialityTranslations = {
+    'General physician': 'Médecin généraliste',
+    'Gynecologist': 'Gynécologue',
+    'Dermatologist': 'Dermatologue',
+    'Pediatricians': 'Pédiatre',
+    'Neurologist': 'Neurologue',
+    'Gastroenterologist': 'Gastro-entérologue',
+};
+
 const TopDoctors = () => {
     const navigate = useNavigate();
     const { doctors } = useContext(AppContext);
@@ -66,13 +75,13 @@ const TopDoctors = () => {
                             />
                             <div className={`absolute top-3 right-3 flex items-center gap-1.5 py-1 px-2.5 rounded-full text-xs font-semibold ${item.available ? 'bg-green-100 text-green-800' : 'bg-gray-200 text-gray-700'}`}>
                                 <div className={`w-2 h-2 rounded-full ${item.available ? 'bg-green-500' : 'bg-gray-500'}`}></div>
-                                <p>{item.available ? 'Disponible' : 'Non dispo.'}</p>
+                                <p>{item.available ? 'Disponible' : 'Indisponible'}</p>
                             </div>
                         </div>
 
                         <div className='p-5 text-left flex-grow flex flex-col'>
                             <h4 className='font-bold text-lg text-gray-900 mb-1'>Dr. {item.name}</h4>
-                            <p className='text-primary-brand text-base font-medium'>{item.speciality}</p>
+                            <p className='text-primary-brand text-base font-medium'>{specialityTranslations[item.speciality] || item.speciality}</p>
                         </div>
                     </div>
                 ))}
@@ -87,7 +96,7 @@ const TopDoctors = () => {
                 }}
                 className='mt-8 bg-primary-brand text-white font-medium py-3 px-8 rounded-lg hover:bg-opacity-90 transition-colors shadow-sm'
             >
-                Voir tous les docteurs
+                Voir tous les médecins
             </motion.button>
         </motion.section>
     );

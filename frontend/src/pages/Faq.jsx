@@ -21,23 +21,23 @@ const FaqItem = ({ question, answer }) => {
 const Faq = () => {
     const faqs = [
         {
-            question: 'How do I book an appointment?',
-            answer: 'You can book an appointment by navigating to the \'All Doctors\' page, selecting a doctor, and then choosing an available time slot on their profile.',
+            question: 'Comment puis-je prendre un rendez-vous ?',
+            answer: 'Vous pouvez prendre un rendez-vous en accédant à la page \'Médecins\', en sélectionnant un médecin, puis en choisissant un créneau horaire disponible sur son profil.',
         },
         {
-            question: 'Can I cancel my appointment?',
-            answer: 'Yes, you can cancel your appointment from the \'My Appointments\' page. Please note any cancellation policies that may apply.',
+            question: 'Puis-je annuler mon rendez-vous ?',
+            answer: 'Oui, vous pouvez annuler votre rendez-vous depuis la page \'Mes Rendez-vous\'. Veuillez noter que des politiques d\'annulation peuvent s\'appliquer.',
         },
         {
-            question: 'Is my personal information secure?',
-            answer: 'We take your privacy very seriously. All your data is encrypted and stored securely. We are committed to being HIPAA compliant.',
+            question: 'Mes informations personnelles sont-elles sécurisées ?',
+            answer: 'Nous prenons votre vie privée très au sérieux. Toutes vos données sont cryptées et stockées en toute sécurité. Nous nous engageons à être conformes à la norme HIPAA.',
         },
     ];
 
     return (
         <div className='container mx-auto px-4 py-8 md:py-12 animate-fade-in'>
             <div className='text-center mb-8 animate-slide-up'>
-                <h1 className='text-3xl md:text-4xl font-extrabold text-blue-600 mb-2'>Frequently Asked Questions</h1>
+                <h1 className='text-3xl md:text-4xl font-extrabold text-blue-600 mb-2'>Questions fréquemment posées</h1>
             </div>
             <div className='max-w-2xl mx-auto'>
                 {faqs.map((faq, index) => (

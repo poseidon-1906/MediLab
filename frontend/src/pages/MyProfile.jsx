@@ -14,7 +14,7 @@ import html2pdf from 'html2pdf.js';
 const formatDate = (dateString) => {
     if (!dateString) return 'N/A';
     const date = new Date(dateString);
-    if (isNaN(date.getTime())) return 'Invalid Date';
+    if (isNaN(date.getTime())) return 'Date invalide';
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
@@ -62,15 +62,15 @@ const ProfileSection = memo(({ userData, setUserData, isEdit, setIsEdit, image, 
                 <div className='relative group'>
                     {isEdit ? (
                         <label htmlFor='image-upload' className='cursor-pointer'>
-                            <img className='w-48 h-48 rounded-full object-cover border-4 border-gray-200 shadow-md group-hover:opacity-60' src={image ? URL.createObjectURL(image) : (userData.image || assets.profile_pic)} alt='User Profile' />
+                            <img className='w-48 h-48 rounded-full object-cover border-4 border-gray-200 shadow-md group-hover:opacity-60' src={image ? URL.createObjectURL(image) : (userData.image || assets.profile_pic)} alt='Profil de l\'utilisateur' />
                             <div className='absolute inset-0 flex flex-col items-center justify-center text-gray-800 opacity-0 group-hover:opacity-100'>
-                                <img className='w-12 h-12' src={assets.upload_icon} alt='Upload Icon' />
-                                <p className="mt-2 text-xs font-semibold">Update</p>
+                                <img className='w-12 h-12' src={assets.upload_icon} alt='Icône de téléchargement' />
+                                <p className="mt-2 text-xs font-semibold">Mettre à jour</p>
                             </div>
                             <input onChange={(e) => setImage(e.target.files[0])} type='file' id='image-upload' hidden />
                         </label>
                     ) : (
-                        <img className='w-48 h-48 rounded-full object-cover border-4 border-gray-200 shadow-md' src={userData.image || assets.profile_pic} alt='User Profile' />
+                        <img className='w-48 h-48 rounded-full object-cover border-4 border-gray-200 shadow-md' src={userData.image || assets.profile_pic} alt='Profil de l\'utilisateur' />
                     )}
                 </div>
             </motion.div>
@@ -86,27 +86,27 @@ const ProfileSection = memo(({ userData, setUserData, isEdit, setIsEdit, image, 
                     </motion.div>
                     <motion.div variants={itemVariants}>
                         {isEdit ? (
-                            <button onClick={onUpdate} className='ml-4 px-6 py-2 font-semibold text-white rounded-full bg-blue-600 hover:bg-blue-700' disabled={isLoading}>{isLoading ? 'Saving...' : 'Save'}</button>
+                            <button onClick={onUpdate} className='ml-4 px-6 py-2 font-semibold text-white rounded-full bg-blue-600 hover:bg-blue-700' disabled={isLoading}>{isLoading ? 'Enregistrement...' : 'Enregistrer'}</button>
                         ) : (
-                            <button onClick={() => setIsEdit(true)} className='ml-4 px-6 py-2 font-semibold text-white rounded-full bg-blue-600 hover:bg-blue-700'>Edit</button>
+                            <button onClick={() => setIsEdit(true)} className='ml-4 px-6 py-2 font-semibold text-white rounded-full bg-blue-600 hover:bg-blue-700'>Modifier</button>
                         )}
                     </motion.div>
                 </div>
                 <motion.div variants={itemVariants} className='space-y-4 mt-6 text-base'>
                     <div className='grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4'>
-                        <p className='font-medium text-gray-600 flex items-center'><FaEnvelope className="mr-2 text-blue-500" />Email:</p>
+                        <p className='font-medium text-gray-600 flex items-center'><FaEnvelope className="mr-2 text-blue-500" />Email :</p>
                         <p className='text-blue-600 font-semibold'>{userData.email}</p>
-                        <p className='font-medium text-gray-600 flex items-center'><FaMapMarkerAlt className="mr-2 text-blue-500" />City:</p>
+                        <p className='font-medium text-gray-600 flex items-center'><FaMapMarkerAlt className="mr-2 text-blue-500" />Ville :</p>
                         {isEdit ? <input className='bg-gray-100 p-1 rounded-md' type='text' onChange={(e) => setUserData(prev => ({ ...prev, address: { ...prev.address, line1: e.target.value } }))} value={userData.address.line1} /> : <p className='text-gray-600'>{userData.address.line1}</p>}
-                        <p className='font-medium text-gray-600 flex items-center'><FaMapMarkerAlt className="mr-2 text-blue-500" />Region:</p>
+                        <p className='font-medium text-gray-600 flex items-center'><FaMapMarkerAlt className="mr-2 text-blue-500" />Région :</p>
                         {isEdit ? <input className='bg-gray-100 p-1 rounded-md' type='text' onChange={(e) => setUserData(prev => ({ ...prev, address: { ...prev.address, line2: e.target.value } }))} value={userData.address.line2} /> : <p className='text-gray-600'>{userData.address.line2}</p>}
-                        <p className='font-medium text-gray-600 flex items-center'><FaPhone className="mr-2 text-blue-500" />Phone:</p>
+                        <p className='font-medium text-gray-600 flex items-center'><FaPhone className="mr-2 text-blue-500" />Téléphone :</p>
                         {isEdit ? <input className='bg-gray-100 p-1 rounded-md' type='text' onChange={(e) => setUserData(prev => ({ ...prev, phone: e.target.value }))} value={userData.phone} /> : <p className='text-gray-600'>{userData.phone}</p>}
-                        <p className='font-medium text-gray-600 flex items-center'><FaVenusMars className="mr-2 text-blue-500" />Genre:</p>
+                        <p className='font-medium text-gray-600 flex items-center'><FaVenusMars className="mr-2 text-blue-500" />Genre :</p>
                         {isEdit ? <select className='bg-gray-100 p-1 rounded-md' onChange={(e) => setUserData(prev => ({ ...prev, gender: e.target.value }))} value={userData.gender}><option value="">Sélectionner</option><option value="Male">Homme</option><option value="Female">Femme</option><option value="Other">Autre</option></select> : <p className='text-gray-600'>{userData.gender}</p>}
-                        <p className='font-medium text-gray-600 flex items-center'><FaRulerVertical className="mr-2 text-blue-500" />Taille:</p>
-                        {isEdit ? <input className='bg-gray-100 p-1 rounded-md' type='text' placeholder="e.g., 175 cm" onChange={(e) => setUserData(prev => ({ ...prev, height: e.target.value }))} value={userData.height} /> : <p className='text-gray-600'>{userData.height || 'N/A'}</p>}
-                        <p className='font-medium text-gray-600 flex items-center'><FaTint className="mr-2 text-red-500" />Groupe Sanguin:</p>
+                        <p className='font-medium text-gray-600 flex items-center'><FaRulerVertical className="mr-2 text-blue-500" />Taille :</p>
+                        {isEdit ? <input className='bg-gray-100 p-1 rounded-md' type='text' placeholder="ex: 175 cm" onChange={(e) => setUserData(prev => ({ ...prev, height: e.target.value }))} value={userData.height} /> : <p className='text-gray-600'>{userData.height || 'N/A'}</p>}
+                        <p className='font-medium text-gray-600 flex items-center'><FaTint className="mr-2 text-red-500" />Groupe Sanguin :</p>
                         {isEdit ? <select className='bg-gray-100 p-1 rounded-md' onChange={(e) => setUserData(prev => ({ ...prev, bloodType: e.target.value }))} value={userData.bloodType}><option value="">Sélectionner</option>{bloodTypes.map(type => <option key={type} value={type}>{type}</option>)}</select> : <p className='text-gray-600'>{userData.bloodType || 'N/A'}</p>}
                     </div>
                 </motion.div>
@@ -130,9 +130,9 @@ const HealthRecordSection = memo(({ healthRecords, onExportPdf, userName }) => {
                 </button>
             </div>
             <div id="medical-record-content" className="p-4 sm:p-6 bg-white rounded-lg border border-gray-200">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 mb-6 border-b border-gray-200">
+                <div className="flex flex-col sm:items-start sm:items-center justify-between p-4 mb-6 border-b border-gray-200">
                     <div className="flex items-center">
-                        <img src={hospitalLogo} alt="Hospital Logo" className="h-12 w-auto mr-4 print:hidden" />
+                        <img src={hospitalLogo} alt="Logo de l\'hôpital" className="h-12 w-auto mr-4 print:hidden" />
                         <h1 className="text-2xl sm:text-3xl font-bold text-blue-700">Carnet de Santé - {userName}</h1>
                     </div>
                     <p className="text-sm text-gray-600 mt-2 sm:mt-0">Date d'impression: {formatDate(new Date())}</p>
@@ -148,7 +148,7 @@ const HealthRecordSection = memo(({ healthRecords, onExportPdf, userName }) => {
                                     <div key={i} className="p-4 border rounded-lg shadow-sm bg-red-50">
                                         <p className="font-bold text-red-800 mb-2">{a.type}</p>
                                         <div className="text-sm space-y-1 text-gray-700">
-                                            <p><span className="font-semibold">Detail:</span> {a.detail}</p>
+                                            <p><span className="font-semibold">Détail :</span> {a.detail}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -164,10 +164,10 @@ const HealthRecordSection = memo(({ healthRecords, onExportPdf, userName }) => {
                                     <div key={i} className="p-4 border rounded-lg shadow-sm bg-green-50">
                                         <p className="font-bold text-green-800 mb-2">{v.vaccin}</p>
                                         <div className="text-sm space-y-1 text-gray-700">
-                                            <p><span className="font-semibold">Date 1:</span> {formatDate(v.date1)}</p>
-                                            <p><span className="font-semibold">Date 2:</span> {formatDate(v.date2)}</p>
-                                            <p><span className="font-semibold">Rappel:</span> {formatDate(v.rappelPrevu)}</p>
-                                            {v.observations && <p><span className="font-semibold">Observations:</span> {v.observations}</p>}
+                                            <p><span className="font-semibold">Date 1 :</span> {formatDate(v.date1)}</p>
+                                            <p><span className="font-semibold">Date 2 :</span> {formatDate(v.date2)}</p>
+                                            <p><span className="font-semibold">Rappel :</span> {formatDate(v.rappelPrevu)}</p>
+                                            {v.observations && <p><span className="font-semibold">Observations :</span> {v.observations}</p>}
                                         </div>
                                     </div>
                                 ))}
@@ -185,9 +185,9 @@ const HealthRecordSection = memo(({ healthRecords, onExportPdf, userName }) => {
                                         <p className="text-sm text-gray-600 mt-1 sm:mt-0">Dr. {r.doctorId.name}</p>
                                     </div>
                                     <div className="text-sm space-y-2 text-gray-700">
-                                        <p><span className="font-semibold">Diagnostic:</span> {r.diagnosis}</p>
-                                        <p><span className="font-semibold">Prescription:</span> {r.prescription}</p>
-                                        {r.notes && <p><span className="font-semibold">Notes:</span> {r.notes}</p>}
+                                        <p><span className="font-semibold">Diagnostic :</span> {r.diagnosis}</p>
+                                        <p><span className="font-semibold">Prescription :</span> {r.prescription}</p>
+                                        {r.notes && <p><span className="font-semibold">Notes :</span> {r.notes}</p>}
                                     </div>
                                 </div>
                             )) : <p className="text-gray-500 pl-4">Aucune consultation enregistrée.</p>}
@@ -199,11 +199,11 @@ const HealthRecordSection = memo(({ healthRecords, onExportPdf, userName }) => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {allLabResults.length > 0 ? allLabResults.map((l, i) => (
                                 <div key={i} className="p-4 border rounded-lg shadow-sm bg-purple-50">
-                                    <p className="font-bold text-purple-800 mb-2">Test: {l.test}</p>
+                                    <p className="font-bold text-purple-800 mb-2">Test : {l.test}</p>
                                     <div className="text-sm space-y-1 text-gray-700">
-                                        <p><span className="font-semibold">Date:</span> {formatDate(l.date)}</p>
-                                        <p><span className="font-semibold">Résultat:</span> {l.result}</p>
-                                        {l.file && <p className="text-blue-500 hover:underline cursor-pointer"><span className="font-semibold text-gray-800">Fichier:</span> {l.file}</p>}
+                                        <p><span className="font-semibold">Date :</span> {formatDate(l.date)}</p>
+                                        <p><span className="font-semibold">Résultat :</span> {l.result}</p>
+                                        {l.file && <p className="text-blue-500 hover:underline cursor-pointer"><span className="font-semibold text-gray-800">Fichier :</span> {l.file}</p>}
                                     </div>
                                 </div>
                             )) : <p className="text-gray-500 pl-4">Aucun résultat de laboratoire.</p>}
@@ -235,7 +235,7 @@ const MyProfile = () => {
                     if (response.data.success) setHealthRecords(response.data.data);
                     else toast.error(response.data.message);
                 } catch (error) {
-                    toast.error(error.response?.data?.message || 'Failed to fetch health records.');
+                    toast.error(error.response?.data?.message || 'Échec de la récupération du carnet de santé.');
                 }
             }
         };
@@ -267,7 +267,7 @@ const MyProfile = () => {
                 toast.error(data.message);
             }
         } catch (error) {
-            toast.error(error.response?.data?.message || 'An error occurred.');
+            toast.error(error.response?.data?.message || 'Une erreur est survenue.');
         } finally {
             setIsLoading(false);
         }
@@ -288,7 +288,7 @@ const MyProfile = () => {
             .catch(() => toast.error("Échec de la génération du PDF."));
     }, [userData.name]);
 
-    if (!userData) return <div className="min-h-[70vh] flex justify-center items-center">Loading Profile...</div>;
+    if (!userData) return <div className="min-h-[70vh] flex justify-center items-center">Chargement du profil...</div>;
 
     return (
         <motion.div className='min-h-[70vh] flex flex-col items-center justify-center p-4' variants={containerVariants} initial="hidden" animate="visible">

@@ -19,10 +19,10 @@ const Banner = () => {
             {/* ------- Left Side ------- */}
             <div className='flex-1 py-8 sm:py-10 md:py-16 lg:py-24 lg:pl-5'>
                 <div className='text-xl sm:text-2xl md:text-3xl lg:text-5xl font-semibold text-white'>
-                    <p>Book Appointment</p>
-                    <p className='mt-4'>With <AnimatedCounter value={100} />+ Trusted Doctors</p>
+                    <p>Prendre un rendez-vous</p>
+                    <p className='mt-4'>Avec <AnimatedCounter value={100} />+ de médecins de confiance</p>
                 </div>
-                <button onClick={() => { navigate('/doctors'); scrollTo(0, 0) }} className='bg-white text-sm sm:text-base text-[#595959] px-8 py-3 rounded-full mt-6 hover:scale-105 transition-all '>Book Appointment</button>
+                <button onClick={() => { navigate('/doctors'); scrollTo(0, 0) }} className='bg-white text-sm sm:text-base text-[#595959] px-8 py-3 rounded-full mt-6 hover:scale-105 transition-all '>Prendre un rendez-vous</button>
             </div>
 
             {/* ------- Right Side ------- */}

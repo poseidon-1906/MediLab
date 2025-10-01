@@ -27,14 +27,14 @@ const Navbar = () => {
     >
       <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('/')}>
         <span className="text-primary-brand font-bold text-2xl">MediLab</span>
-        <span className="text-gray-800 text-xl font-light">Hospital</span>
+        <span className="text-gray-800 text-xl font-light">Hôpital</span>
       </div>
 
       <ul className='md:flex items-center gap-6 font-medium hidden'>
-        <NavLink to='/' className={navLinkClasses}>HOME</NavLink>
-        <NavLink to='/doctors' className={navLinkClasses}>ALL DOCTORS</NavLink>
+        <NavLink to='/' className={navLinkClasses}>ACCUEIL</NavLink>
+        <NavLink to='/doctors' className={navLinkClasses}>MÉDECINS</NavLink>
         <NavLink to='/services' className={navLinkClasses}>SERVICES</NavLink>
-        <NavLink to='/about' className={navLinkClasses}>ABOUT</NavLink>
+        <NavLink to='/about' className={navLinkClasses}>À PROPOS</NavLink>
         <NavLink to='/contact' className={navLinkClasses}>CONTACT</NavLink>
       </ul>
 
@@ -47,9 +47,9 @@ const Navbar = () => {
             </div>
             <div className='absolute top-full right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-20 hidden group-hover:block ring-1 ring-black ring-opacity-5'>
               <div className='py-1'>
-                <p onClick={() => navigate('/my-profile')} className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer'>My Profile</p>
-                <p onClick={() => navigate('/my-appointments')} className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer'>My Appointments</p>
-                <p onClick={logout} className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer'>Logout</p>
+                <p onClick={() => navigate('/my-profile')} className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer'>Mon Profil</p>
+                <p onClick={() => navigate('/my-appointments')} className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer'>Mes Rendez-vous</p>
+                <p onClick={logout} className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer'>Déconnexion</p>
               </div>
             </div>
           </div>
@@ -68,10 +68,10 @@ const Navbar = () => {
             <img onClick={() => setShowMenu(false)} src={assets.cross_icon} className='w-6 cursor-pointer' alt="Close" />
           </div>
           <ul className='flex flex-col items-start gap-4 mt-8 text-lg font-medium px-5'>
-            <NavLink onClick={() => setShowMenu(false)} to='/' className={navLinkClasses}>HOME</NavLink>
-            <NavLink onClick={() => setShowMenu(false)} to='/doctors' className={navLinkClasses}>ALL DOCTORS</NavLink>
+            <NavLink onClick={() => setShowMenu(false)} to='/' className={navLinkClasses}>ACCUEIL</NavLink>
+            <NavLink onClick={() => setShowMenu(false)} to='/doctors' className={navLinkClasses}>MÉDECINS</NavLink>
             <NavLink onClick={() => setShowMenu(false)} to='/services' className={navLinkClasses}>SERVICES</NavLink>
-            <NavLink onClick={() => setShowMenu(false)} to='/about' className={navLinkClasses}>ABOUT</NavLink>
+            <NavLink onClick={() => setShowMenu(false)} to='/about' className={navLinkClasses}>À PROPOS</NavLink>
             <NavLink onClick={() => setShowMenu(false)} to='/contact' className={navLinkClasses}>CONTACT</NavLink>
           </ul>
           <div className="absolute bottom-8 left-0 right-0 px-5">

@@ -6,26 +6,26 @@ const Blog = () => {
     const blogPosts = [
         {
             id: 1,
-            title: 'The Importance of Regular Check-ups',
-            excerpt: 'Regular check-ups can help find potential health issues before they become a problem. Learn why they are so important.',
-            author: 'Dr. John Doe',
-            date: 'September 24, 2025',
+            title: 'L\'importance des contrôles réguliers',
+            excerpt: 'Les contrôles réguliers peuvent aider à détecter les problèmes de santé potentiels avant qu\'ils ne deviennent un problème. Découvrez pourquoi ils sont si importants.',
+            author: 'Dr Jean Dupont',
+            date: '24 septembre 2025',
         },
         {
             id: 2,
-            title: '5 Tips for a Healthy Heart',
-            excerpt: 'A healthy heart is crucial for overall health. Here are 5 tips to keep your heart in top shape.',
-            author: 'Dr. Jane Smith',
-            date: 'September 20, 2025',
+            title: '5 conseils pour un cœur en bonne santé',
+            excerpt: 'Un cœur en bonne santé est crucial pour la santé globale. Voici 5 conseils pour garder votre cœur en pleine forme.',
+            author: 'Dr Jeanne Smith',
+            date: '20 septembre 2025',
         },
     ];
 
     return (
         <div className='container mx-auto px-4 py-8 md:py-12 animate-fade-in'>
             <div className='text-center mb-8 animate-slide-up'>
-                <h1 className='text-3xl md:text-4xl font-extrabold text-blue-600 mb-2'>Our Blog</h1>
+                <h1 className='text-3xl md:text-4xl font-extrabold text-blue-600 mb-2'>Notre Blog</h1>
                 <p className='text-lg text-gray-600 max-w-2xl mx-auto'>
-                    Stay up-to-date with the latest health news and tips from our experts.
+                    Restez à jour avec les dernières nouvelles et conseils sur la santé de nos experts.
                 </p>
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>

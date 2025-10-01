@@ -8,19 +8,19 @@ const SpecialityMenu = () => {
     const specialitiesWithDesc = specialityData.map(item => {
         switch (item.speciality) {
             case 'General physician':
-                return { ...item, description: 'Soins primaires complets pour tous les âges.' };
+                return { ...item, french_name: 'Médecin généraliste', description: 'Soins primaires complets pour tous les âges.' };
             case 'Gynecologist':
-                return { ...item, description: 'Spécialisé dans la santé reproductive des femmes.' };
+                return { ...item, french_name: 'Gynécologue', description: 'Spécialisé dans la santé reproductive des femmes.' };
             case 'Dermatologist':
-                return { ...item, description: 'Expertise des affections de la peau, des cheveux et des ongles.' };
+                return { ...item, french_name: 'Dermatologue', description: 'Expertise des affections de la peau, des cheveux et des ongles.' };
             case 'Pediatricians':
-                return { ...item, description: 'Soins dédiés aux nourrissons, enfants et adolescents.' };
+                return { ...item, french_name: 'Pédiatre', description: 'Soins dédiés aux nourrissons, enfants et adolescents.' };
             case 'Neurologist':
-                return { ...item, description: 'Traitement des troubles du système nerveux.' };
+                return { ...item, french_name: 'Neurologue', description: 'Traitement des troubles du système nerveux.' };
             case 'Gastroenterologist':
-                return { ...item, description: 'Centré sur le système digestif et ses troubles.' };
+                return { ...item, french_name: 'Gastro-entérologue', description: 'Centré sur le système digestif et ses troubles.' };
             default:
-                return { ...item, description: 'Soins médicaux spécialisés.' };
+                return { ...item, french_name: item.speciality, description: 'Soins médicaux spécialisés.' };
         }
     });
 
@@ -69,10 +69,10 @@ const SpecialityMenu = () => {
                                 <div className="flex flex-col items-center text-center">
                                     <img 
                                         src={item.image} 
-                                        alt={item.speciality} 
+                                        alt={item.french_name} 
                                         className='w-20 h-20 mb-5' 
                                     />
-                                    <h3 className='text-xl font-semibold text-gray-900'>{item.speciality}</h3>
+                                    <h3 className='text-xl font-semibold text-gray-900'>{item.french_name}</h3>
                                     <p className='text-gray-600 mt-2'>{item.description}</p>
                                 </div>
                             </Link>

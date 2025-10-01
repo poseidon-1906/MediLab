@@ -21,6 +21,7 @@ const Faq = lazy(() => import('./pages/Faq'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+import ChatWidget from './components/ChatWidget';
 
 const App = () => {
   return (
@@ -47,6 +48,7 @@ const App = () => {
           <Route path='/privacy-policy' element={<PrivacyPolicy />} />
         </Routes>
       </Suspense>
+      <ChatWidget />
       <Footer />
     </div>
   );

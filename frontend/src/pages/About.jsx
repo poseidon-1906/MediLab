@@ -9,14 +9,14 @@ const About = () => {
   return (
     <>
       <Hero
-        title={"Learn More About Us | MediLab Medical Institute"}
+        title={"En savoir plus sur nous | Institut Médical MediLab"}
         imageUrl={about}
       />
 
       <div className="container mx-auto px-6 py-12">
         <div className="text-center text-2xl font-semibold pt-10 text-gray-700">
           <p>
-            ABOUT <span className="text-primary-brand">US</span>
+            À PROPOS DE <span className="text-primary-brand">NOUS</span>
           </p>
         </div>
 
@@ -24,19 +24,19 @@ const About = () => {
          
           <img
             src={background}
-            alt="A medical institute's staff working"
+            alt="Personnel d'un institut médical au travail"
             className="w-full md:max-w-xs rounded-xl shadow-lg"
           />
           <div className="flex flex-col justify-center gap-6 md:w-2/4 text-lg text-gray-600">
             <p>
-              Welcome to MediLab, your trusted partner in managing your healthcare needs conveniently and efficiently. At Prescripto, we understand the challenges individuals face when it comes to scheduling doctor appointments and managing their health records.
+              Bienvenue chez MediLab, votre partenaire de confiance pour gérer vos besoins de santé de manière pratique et efficace. Chez MediLab, nous comprenons les défis auxquels les individus sont confrontés lorsqu'il s'agit de planifier des rendez-vous chez le médecin et de gérer leurs dossiers de santé.
             </p>
             <p>
-              MediLab is committed to excellence in healthcare technology. We continuously strive to enhance our platform, integrating the latest advancements to improve user experience and deliver superior service. Whether you're booking your first appointment or managing ongoing care, MediLab is here to support you every step of the way.
+              MediLab s'engage à l'excellence en matière de technologie de la santé. Nous nous efforçons continuellement d'améliorer notre plateforme, en intégrant les dernières avancées pour améliorer l'expérience utilisateur et fournir un service de qualité supérieure. Que vous réserviez votre premier rendez-vous ou que vous gériez des soins continus, MediLab est là pour vous accompagner à chaque étape.
             </p>
-            <strong className="text-primary-brand text-xl font-bold">Our Vision</strong>
+            <strong className="text-primary-brand text-xl font-bold">Notre Vision</strong>
             <p>
-              Our vision at MediLab is to create a seamless healthcare experience for every user. We aim to bridge the gap between patients and healthcare providers, making it easier for you to access the care you need, when you need it.
+              Notre vision chez MediLab est de créer une expérience de santé transparente pour chaque utilisateur. Nous visons à combler le fossé entre les patients et les prestataires de soins de santé, afin que vous puissiez accéder plus facilement aux soins dont vous avez besoin, quand vous en avez besoin.
             </p>
           </div>
         </div>
@@ -45,27 +45,27 @@ const About = () => {
 
         <div className="text-center text-xl my-10 font-medium text-gray-500">
           <p>
-            WHY <span className="text-primary-brand font-semibold">CHOOSE US</span>
+            POURQUOI <span className="text-primary-brand font-semibold">NOUS CHOISIR</span>
           </p>
         </div>
         
         <div className="flex flex-col md:flex-row gap-6 mb-20">
           <div className="flex-1 border-2 border-transparent hover:border-blue-500 hover:bg-white p-8 sm:p-12 flex flex-col gap-5 text-gray-600 transition-all duration-300 rounded-xl shadow-md cursor-pointer">
-            <strong className="text-primary-brand text-xl">EFFICIENCY</strong>
+            <strong className="text-primary-brand text-xl">EFFICACITÉ</strong>
             <p>
-              Streamlined appointment scheduling that fits into your busy lifestyle.
+              Planification de rendez-vous simplifiée qui s'intègre à votre style de vie chargé.
             </p>
           </div>
           <div className="flex-1 border-2 border-transparent hover:border-blue-500 hover:bg-white p-8 sm:p-12 flex flex-col gap-5 text-gray-600 transition-all duration-300 rounded-xl shadow-md cursor-pointer">
-            <strong className="text-blue-600 text-xl">CONVENIENCE</strong>
+            <strong className="text-blue-600 text-xl">COMMODITÉ</strong>
             <p>
-              Access to a network of trusted healthcare professionals in your area.
+              Accès à un réseau de professionnels de la santé de confiance dans votre région.
             </p>
           </div>
           <div className="flex-1 border-2 border-transparent hover:border-blue-500 hover:bg-white p-8 sm:p-12 flex flex-col gap-5 text-gray-600 transition-all duration-300 rounded-xl shadow-md cursor-pointer">
-            <strong className="text-red-400 text-xl">PERSONALIZATION</strong>
+            <strong className="text-red-400 text-xl">PERSONNALISATION</strong>
             <p>
-              Tailored recommendations and reminders to help you stay on top of your health.
+              Recommandations et rappels personnalisés pour vous aider à rester au top de votre santé.
             </p>
           </div>
         </div>
