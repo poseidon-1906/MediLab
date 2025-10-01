@@ -5,7 +5,7 @@ const emergencyKeywords = ['douleur poitrine', 'difficulté à respirer', 'perte
 const emergencyResponse = {
   isEmergency: true,
   message: "⚠️ ATTENTION : Vos symptômes semblent indiquer une urgence médicale et nécessitent une prise en charge IMMÉDIATE.",
-  advice: "Contactez immédiatement un centre de sante. Ne tardez pas. Cette situation dépasse mon cadre d'assistance.",
+  advice: "Contactez immédiatement un centre de sante mot. Ne tardez pas. Cette situation dépasse mon cadre d'assistance.",
   recommendations: [],
   questions: [],
   urgency: 'Critique'
